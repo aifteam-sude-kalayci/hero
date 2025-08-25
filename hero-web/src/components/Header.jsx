@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from 'react-router-dom';
 import SplitType from "split-type";
 import "./Header.css";
 
@@ -17,21 +18,21 @@ const Header = () => {
     <>
       <header>
         <div className="header-inner">
-          <a href="/" className="logo">
+          <NavLink to="/" className="logo">
             HERO
-          </a>
+          </NavLink>
           <ul className="nav-links">
             <li>
-              <a href="#">Anasayfa</a>
+              <NavLink to="/">Anasayfa</NavLink>
             </li>
             <li>
-              <a href="#">Hakkımızda</a>
+              <NavLink to="/hakkimizda">Hakkımızda</NavLink>
             </li>
             <li>
-              <a href="#">Hizmetlerimiz</a>
+              <NavLink to="/hizmetler">Hizmetlerimiz</NavLink>
             </li>
             <li>
-              <a href="#">İletişim</a>
+              <NavLink to="/iletisim">İletişim</NavLink>
             </li>
           </ul>
         </div>

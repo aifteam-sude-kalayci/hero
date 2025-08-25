@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import SplitType from 'split-type';
 import './Slider.css';
 
+const asset = (name) => new URL(`../assets/slider/${name}`, import.meta.url).href;
+
 export default function Slider() {
   useEffect(() => {
     document.documentElement.classList.add('scroll-hide');
@@ -310,249 +312,207 @@ export default function Slider() {
             <li className="active">
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Sosyal Medya</h1>
-                  <h1>Sosyal Medya</h1>
-                  <h1 className="t-stroke italic">Sosyal Medya</h1>
-                  <h1>Sosyal Medya</h1>
+                  <h1 className="t-stroke italic">Sosyal Medya Çözümleri</h1>
+                  <h1>Sosyal Medya Çözümleri</h1>
+                  <h1 className="t-stroke italic">Sosyal Medya Çözümleri</h1>
+                  <h1>Sosyal Medya Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Sosyal Medya</h1>
-                  <h1>Sosyal Medya</h1>
-                  <h1 className="t-stroke italic">Sosyal Medya</h1>
-                  <h1>Sosyal Medya</h1>
+                  <h1 className="t-stroke italic">Sosyal Medya Çözümleri</h1>
+                  <h1>Sosyal Medya Çözümleri</h1>
+                  <h1 className="t-stroke italic">Sosyal Medya Çözümleri</h1>
+                  <h1>Sosyal Medya Çözümleri</h1>
                 </div>
               </div>
             </li>
             <li>
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">han so-hee</h1>
-                  <h1>han so-hee</h1>
-                  <h1 className="t-stroke italic">han so-hee</h1>
-                  <h1>han so-hee</h1>
+                  <h1 className="t-stroke italic">Web Tasarım Çözümleri</h1>
+                  <h1>Web Tasarım Çözümleri</h1>
+                  <h1 className="t-stroke italic">Web Tasarım Çözümleri</h1>
+                  <h1>Web Tasarım Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">han so-hee</h1>
-                  <h1>han so-hee</h1>
-                  <h1 className="t-stroke italic">han so-hee</h1>
-                  <h1>han so-hee</h1>
+                  <h1 className="t-stroke italic">Web Tasarım Çözümleri</h1>
+                  <h1>Web Tasarım Çözümleri</h1>
+                  <h1 className="t-stroke italic">Web Tasarım Çözümleri</h1>
+                  <h1>Web Tasarım Çözümleri</h1>
                 </div>
               </div>
             </li>
             <li>
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Go Yoon Jung</h1>
-                  <h1>Go Yoon Jung</h1>
-                  <h1 className="t-stroke italic">Go Yoon Jung</h1>
-                  <h1>Go Yoon Jung</h1>
+                  <h1 className="t-stroke italic">Grafik Tasarım Çözümleri</h1>
+                  <h1>Grafik Tasarım Çözümleri</h1>
+                  <h1 className="t-stroke italic">Grafik Tasarım Çözümleri</h1>
+                  <h1>Grafik Tasarım Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Go Yoon Jung</h1>
-                  <h1>Go Yoon Jung</h1>
-                  <h1 className="t-stroke italic">Go Yoon Jung</h1>
-                  <h1>Go Yoon Jung</h1>
+                  <h1 className="t-stroke italic">Grafik Tasarım Çözümleri</h1>
+                  <h1>Grafik Tasarım Çözümleri</h1>
+                  <h1 className="t-stroke italic">Grafik Tasarım Çözümleri</h1>
+                  <h1>Grafik Tasarım Çözümleri</h1>
                 </div>
               </div>
             </li>
             <li>
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Han Hyo-joo</h1>
-                  <h1>Han Hyo-joo</h1>
-                  <h1 className="t-stroke italic">Han Hyo-joo</h1>
-                  <h1>Han Hyo-joo</h1>
+                  <h1 className="t-stroke italic">SAP Çözümleri</h1>
+                  <h1>SAP Çözümleri</h1>
+                  <h1 className="t-stroke italic">SAP Çözümleri</h1>
+                  <h1>SAP Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Han Hyo-joo</h1>
-                  <h1>Han Hyo-joo</h1>
-                  <h1 className="t-stroke italic">Han Hyo-joo</h1>
-                  <h1>Han Hyo-joo</h1>
+                  <h1 className="t-stroke italic">SAP Çözümleri</h1>
+                  <h1>SAP Çözümleri</h1>
+                  <h1 className="t-stroke italic">SAP Çözümleri</h1>
+                  <h1>SAP Çözümleri</h1>
                 </div>
               </div>
             </li>
             <li>
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">kim So-eun</h1>
-                  <h1>kim So-eun</h1>
-                  <h1 className="t-stroke italic">kim So-eun</h1>
-                  <h1>kim So-eun</h1>
+                  <h1 className="t-stroke italic">Mobil Yazılım Çözümleri</h1>
+                  <h1>Mobil Yazılım Çözümleri</h1>
+                  <h1 className="t-stroke italic">Mobil Yazılım Çözümleri</h1>
+                  <h1>Mobil Yazılım Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">kim So-eun</h1>
-                  <h1>kim So-eun</h1>
-                  <h1 className="t-stroke italic">kim So-eun</h1>
-                  <h1>kim So-eun</h1>
+                  <h1 className="t-stroke italic">Mobil Yazılım Çözümleri</h1>
+                  <h1>Mobil Yazılım Çözümleri</h1>
+                  <h1 className="t-stroke italic">Mobil Yazılım Çözümleri</h1>
+                  <h1>Mobil Yazılım Çözümleri</h1>
                 </div>
               </div>
             </li>
             <li>
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Song Hye-Kyo</h1>
-                  <h1>Song Hye-Kyo</h1>
-                  <h1 className="t-stroke italic">Song Hye-Kyo</h1>
-                  <h1>Song Hye-Kyo</h1>
+                  <h1 className="t-stroke italic">Rezervasyon Çözümleri</h1>
+                  <h1>Rezervasyon Çözümleri</h1>
+                  <h1 className="t-stroke italic">Rezervasyon Çözümleri</h1>
+                  <h1>Rezervasyon Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">Song Hye-Kyo</h1>
-                  <h1>Song Hye-Kyo</h1>
-                  <h1 className="t-stroke italic">Song Hye-Kyo</h1>
-                  <h1>Song Hye-Kyo</h1>
+                  <h1 className="t-stroke italic">Rezervasyon Çözümleri</h1>
+                  <h1>Rezervasyon Çözümleri</h1>
+                  <h1 className="t-stroke italic">Rezervasyon Çözümleri</h1>
+                  <h1>Rezervasyon Çözümleri</h1>
                 </div>
               </div>
             </li>
             <li>
               <div className="title-main">
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">seol in-ah</h1>
-                  <h1>seol in-ah</h1>
-                  <h1 className="t-stroke italic">seol in-ah</h1>
-                  <h1>seol in-ah</h1>
+                  <h1 className="t-stroke italic">QR Menü Çözümleri</h1>
+                  <h1>QR Menü Çözümleri</h1>
+                  <h1 className="t-stroke italic">QR Menü Çözümleri</h1>
+                  <h1>QR Menü Çözümleri</h1>
                 </div>
                 <div className="title-wrapper">
-                  <h1 className="t-stroke italic">seol in-ah</h1>
-                  <h1>seol in-ah</h1>
-                  <h1 className="t-stroke italic">seol in-ah</h1>
-                  <h1>seol in-ah</h1>
+                  <h1 className="t-stroke italic">QR Menü Çözümleri</h1>
+                  <h1>QR Menü Çözümleri</h1>
+                  <h1 className="t-stroke italic">QR Menü Çözümleri</h1>
+                  <h1>QR Menü Çözümleri</h1>
                 </div>
               </div>
             </li>
-            <li>
-              <div className="title-main">
-                <div className="title-wrapper">
-                  <h1 className="t-stroke italic">kim sejeong</h1>
-                  <h1>kim sejeong</h1>
-                  <h1 className="t-stroke italic">kim sejeong</h1>
-                  <h1>kim sejeong</h1>
-                </div>
-                <div className="title-wrapper">
-                  <h1 className="t-stroke italic">kim sejeong</h1>
-                  <h1>kim sejeong</h1>
-                  <h1 className="t-stroke italic">kim sejeong</h1>
-                  <h1>kim sejeong</h1>
-                </div>
-              </div>
-            </li>
+            
           </ul>
         </div>
         <div className="third-img-slider">
           <ul>
             <li className="active">
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kwon-nara.jpg" alt="images" className="img-fluid" />
+              <img src={asset('sosyal-medya.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Sosyal Medya</h6>
-                <span>Profession:- Actress</span>
+                <h6>Sosyal Medya Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/han-soo-hee.jpg" alt="images" className="img-fluid" />
+              <img src={asset('web-tk.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Han So-hee</h6>
-                <span>Profession:- Actress </span>
+                <h6>Web Tasarım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/go-yoon-jung.jpg" alt="images" className="img-fluid" />
+              <img src={asset('grafik.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Go Yoon Jung</h6>
-                <span>Profession:- Actress</span>
+                <h6>Grafik Tasarım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/han-hyo-joo.jpg" alt="images" className="img-fluid" />
+              <img src={asset('sap.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Han hyo-Joo</h6>
-                <span>Profession:- Actress</span>
+                <h6>SAP Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kim-yoo-jung.jpg" alt="images" className="img-fluid" />
+              <img src={asset('mobil.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Kim yoo-jung</h6>
-                <span>Profession:- Actress</span>
+                <h6>Mobil Yazılım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/song-hye-kyo.jpg" alt="images" className="img-fluid" />
+              <img src={asset('rezervasyon.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Song Hye-Kyo</h6>
-                <span>Profession:- Actress</span>
+                <h6>Rezervasyon Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/seol-in-ah.jpg" alt="images" className="img-fluid" />
+              <img src={asset('qr.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Seol in-ah</h6>
-                <span>Profession:- Actress</span>
+                <h6>QR Menü Çözümleri</h6>
               </div>
             </li>
-            <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kim-sejeong.jpg" alt="images" className="img-fluid" />
-              <div className="img-details">
-                <h6>Kim sejeong</h6>
-                <span>Profession:- Actress</span>
-              </div>
-            </li>
+            
           </ul>
         </div>
         <div className="img-slider">
           <ul>
             <li className="active show_class">
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kwon-nara.jpg" alt="images" className="img-fluid" />
+              <img src={asset('sosyal-medya.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Sosyal Medya</h6>
-                <span>Profession:- Actress</span>
+                <h6>Sosyal Medya Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/han-soo-hee.jpg" alt="images" className="img-fluid" />
+              <img src={asset('web-tk.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Han So-hee</h6>
-                <span>Profession:- Actress </span>
+                <h6>Web Tasarım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/go-yoon-jung.jpg" alt="images" className="img-fluid" />
+              <img src={asset('grafik.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Go Yoon Jung</h6>
-                <span>Profession:- Actress</span>
+                <h6>Grafik Tasarım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/han-hyo-joo.jpg" alt="images" className="img-fluid" />
+              <img src={asset('sap.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Han hyo-Joo</h6>
-                <span>Profession:- Actress</span>
+                <h6>SAP Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kim-yoo-jung.jpg" alt="images" className="img-fluid" />
+              <img src={asset('mobil.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Kim yoo-jung</h6>
-                <span>Profession:- Actress</span>
+                <h6>Mobil Yazılım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/song-hye-kyo.jpg" alt="images" className="img-fluid" />
+              <img src={asset('rezervasyon.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Song Hye-Kyo</h6>
-                <span>Profession:- Actress</span>
+                <h6>Rezervasyon Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/seol-in-ah.jpg" alt="images" className="img-fluid" />
+              <img src={asset('qr.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Seol in-ah</h6>
-                <span>Profession:- Actress</span>
-              </div>
-            </li>
-            <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kim-sejeong.jpg" alt="images" className="img-fluid" />
-              <div className="img-details">
-                <h6>Kim sejeong</h6>
-                <span>Profession:- Actress</span>
+                <h6>QR Menü Çözümleri</h6>
               </div>
             </li>
           </ul>
@@ -560,59 +520,45 @@ export default function Slider() {
         <div className="second-img-slider">
           <ul>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kwon-nara.jpg" alt="images" className="img-fluid" />
+              <img src={asset('sosyal-medya.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Sosyal Medya</h6>
-                <span>Profession:- Actress</span>
+                <h6>Sosyal Medya Çözümleri</h6>
               </div>
             </li>
             <li className="active">
-              <img src="https://www.yudiz.com/codepen/gsap-slider/han-soo-hee.jpg" alt="images" className="img-fluid" />
+              <img src={asset('web-tk.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Han So-hee</h6>
-                <span>Profession:- Actress </span>
+                <h6>Web Tasarım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/go-yoon-jung.jpg" alt="images" className="img-fluid" />
+              <img src={asset('grafik.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Go Yoon Jung</h6>
-                <span>Profession:- Actress</span>
+                <h6>Grafik Tasarım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/han-hyo-joo.jpg" alt="images" className="img-fluid" />
+              <img src={asset('sap.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Han hyo-Joo</h6>
-                <span>Profession:- Actress</span>
+                <h6>SAP Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kim-yoo-jung.jpg" alt="images" className="img-fluid" />
+              <img src={asset('mobil.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Kim yoo-jung</h6>
-                <span>Profession:- Actress</span>
+                <h6>Mobil Yazılım Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/song-hye-kyo.jpg" alt="images" className="img-fluid" />
+              <img src={asset('rezervasyon.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Song Hye-Kyo</h6>
-                <span>Profession:- Actress</span>
+                <h6>Rezervasyon Çözümleri</h6>
               </div>
             </li>
             <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/seol-in-ah.jpg" alt="images" className="img-fluid" />
+              <img src={asset('qr.jpg')} alt="images" className="img-fluid" />
               <div className="img-details">
-                <h6>Seol in-ah</h6>
-                <span>Profession:- Actress</span>
-              </div>
-            </li>
-            <li>
-              <img src="https://www.yudiz.com/codepen/gsap-slider/kim-sejeong.jpg" alt="images" className="img-fluid" />
-              <div className="img-details">
-                <h6>Kim sejeong</h6>
-                <span>Profession:- Actress</span>
+                <h6>QR Menü Çözümleri</h6>
               </div>
             </li>
           </ul>
