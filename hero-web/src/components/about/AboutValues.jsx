@@ -1,0 +1,101 @@
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './AboutValues.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function AboutValues() {
+  const valuesRef = useRef(null);
+
+  useEffect(() => {
+    // Values section animation
+    const valuesTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: valuesRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse"
+      }
+    });
+
+    valuesTl.fromTo(valuesRef.current.children,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", stagger: 0.1 }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
+  const values = [
+    {
+      id: 1,
+      title: "Yenilikçilik",
+      description: "Sürekli gelişen teknolojileri takip ederek en güncel çözümleri sunuyoruz.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      )
+    },
+    {
+      id: 2,
+      title: "Güvenilirlik",
+      description: "Müşterilerimizle uzun vadeli güven ilişkisi kurarak kalıcı çözümler üretiyoruz.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22,4 12,14.01 9,11.01"/>
+        </svg>
+      )
+    },
+    {
+      id: 3,
+      title: "Kalite",
+      description: "Her projede en yüksek kalite standartlarını koruyarak mükemmel sonuçlar elde ediyoruz.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M9 12l2 2 4-4"/>
+          <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+        </svg>
+      )
+    },
+    {
+      id: 4,
+      title: "Müşteri Odaklılık",
+      description: "Müşterilerimizin ihtiyaçlarını anlayarak onlara özel çözümler geliştiriyoruz.",
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      )
+    }
+  ];
+
+  return (
+    <section className="about-values" ref={valuesRef}>
+      <div className="container">
+        <div className="values-header">
+          <h2 className="section-title">Değerlerimiz</h2>
+          <p className="section-subtitle">
+            Çalışma prensiplerimizi oluşturan temel değerlerimiz
+          </p>
+        </div>
+        <div className="values-grid">
+          {values.map((value) => (
+            <div key={value.id} className="value-card">
+              <div className="value-icon">
+                {value.icon}
+              </div>
+              <h3 className="value-title">{value.title}</h3>
+              <p className="value-description">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
