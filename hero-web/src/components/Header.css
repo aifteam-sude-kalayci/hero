@@ -1,0 +1,148 @@
+/* Loader */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background: #171010;
+  z-index: 9999;
+}
+
+.revealer,
+.loader-text-wrapper,
+.progress-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.progress-wrapper {
+  background: #fff;
+}
+
+.progress-line-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 150px;
+  height: 8px;
+  border-radius: 50px;
+  background: #e5e5e5;
+  overflow: hidden;
+}
+
+.progress-line {
+  background: #000;
+  width: 0%;
+  height: 100%;
+  display: block;
+}
+
+.loader-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loader-text h3 {
+  color: #0000;
+  text-transform: uppercase;
+  font-size: 60px;
+  line-height: 1.4;
+  letter-spacing: 1.6px;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 10px 30px;
+  background: #fff;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ensure full contrast on white background */
+.header-inner, .header-inner * {
+  text-shadow: none !important;
+}
+.header-inner .nav-links li { opacity: 1 !important; }
+
+.header-inner .logo {
+  font-size: max(2.5vw, 30px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  opacity: 1 !important;
+}
+
+.header-inner .nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-inner .nav-links li a {
+  height: max(1vw, 25px);
+  overflow: hidden;
+  display: block;
+  font-size: max(0.9vw, 16px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  opacity: 1 !important;
+}
+
+.header-inner .nav-links li a:hover {
+  transform: translateY(-2px);
+  transition: 0.3s ease;
+}
+
+/* SplitType character hover effect to match provided style */
+.header-inner .nav-links li a .char {
+  position: relative;
+  transition: transform 0.35s ease;
+  display: inline-block;
+  color: #000;
+}
+
+.header-inner .nav-links li a:hover .char {
+  transform: translateY(-25px);
+}
+
+.header-inner .nav-links li a .char::after {
+  content: attr(data-letter);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  color: #000;
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 10px;
+  }
+  .header-inner .nav-links {
+    gap: 10px;
+  }
+}
+
+
