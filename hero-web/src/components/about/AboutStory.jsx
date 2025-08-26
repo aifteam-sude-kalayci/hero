@@ -36,7 +36,7 @@ export default function AboutStory() {
           <div className="story-text">
             <h2 className="section-title">Hikayemiz</h2>
             <p>
-              2020 yılında kurulan HERO, dijital dönüşümün önemini kavrayarak
+              2025 yılında kurulan HERO, dijital dönüşümün önemini kavrayarak
               işletmelerin dijital varlıklarını güçlendirmek amacıyla yola çıktı.
               Küçük bir ekiple başladığımız yolculuğumuzda, bugün 500'den fazla
               mutlu müşteriye hizmet veriyoruz.
@@ -48,7 +48,7 @@ export default function AboutStory() {
             </p>
             <div className="story-stats">
               <div className="story-stat">
-                <div className="stat-number">2020</div>
+                <div className="stat-number">2025</div>
                 <div className="stat-label">Kuruluş Yılı</div>
               </div>
               <div className="story-stat">

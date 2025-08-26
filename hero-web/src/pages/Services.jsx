@@ -6,7 +6,6 @@ import ServicesCTA from '../components/services/ServicesCTA';
 export default function Services() {
   return (
     <div className="services-page">
-      <ServicesHero />
       <ServicesSolutions />
       <ServicesCTA />
     </div>

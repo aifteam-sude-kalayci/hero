@@ -7,7 +7,6 @@ import AboutCTA from '../components/about/AboutCTA';
 export default function About() {
   return (
     <div className="about-page">
-      <AboutHero />
       <AboutStory />
       <AboutValues />
       <AboutCTA />

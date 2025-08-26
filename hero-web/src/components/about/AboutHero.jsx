@@ -31,24 +31,6 @@ export default function AboutHero() {
             güvenilir bir ekibiz. 5 yılı aşkın deneyimimizle, müşterilerimizin
             dijital varlıklarını güçlendiriyoruz.
           </p>
-          <div className="hero-stats">
-            <div className="stat-item">
-              <div className="stat-number">500+</div>
-              <div className="stat-label">Mutlu Müşteri</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">1000+</div>
-              <div className="stat-label">Tamamlanan Proje</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">5+</div>
-              <div className="stat-label">Yıllık Deneyim</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">%98</div>
-              <div className="stat-label">Müşteri Memnuniyeti</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

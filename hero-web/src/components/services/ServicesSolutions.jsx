@@ -102,7 +102,7 @@ export default function ServicesSolutions() {
     <section className="solutions-section" ref={solutionsRef}>
       <div className="container">
         <div className="section-header">
-          <h2>Çözümlerimiz</h2>
+          <h2>Hizmetlerimiz</h2>
           <p>İşinizi büyütmek için ihtiyacınız olan tüm dijital çözümler</p>
         </div>
         
