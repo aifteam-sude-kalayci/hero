@@ -30,7 +30,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #1692ff 0%, #21c7cf);
 }
 
 .testimonial-content {
@@ -68,7 +68,7 @@
 .author-avatar {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1692ff 0%, #21c7cf);
   border-radius: 50%;
   display: flex;
   align-items: center;

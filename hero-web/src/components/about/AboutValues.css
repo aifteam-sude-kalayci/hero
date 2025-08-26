@@ -35,7 +35,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #1692ff 0%, #21c7cf);
   border-radius: 2px;
 }
 
@@ -71,7 +71,7 @@
 .about-values .value-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1692ff 0%, #21c7cf);
   border-radius: 50%;
   display: flex;
   align-items: center;

@@ -41,7 +41,7 @@
   left: 0;
   width: 60px;
   height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #1692ff 0%, #21c7cf);
   border-radius: 2px;
 }
 
@@ -69,7 +69,7 @@
 .info-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #1692ff 0%, #21c7cf);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -116,7 +116,7 @@
   left: 0;
   width: 60px;
   height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #1692ff 0%, #21c7cf);
   border-radius: 2px;
 }
 
@@ -196,7 +196,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #1692ff 0%, #21c7cf);
   color: white;
   border: none;
   border-radius: 50px;
