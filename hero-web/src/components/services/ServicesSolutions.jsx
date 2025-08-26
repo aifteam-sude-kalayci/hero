@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ServicesSolutions.css';
@@ -16,6 +16,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ServicesSolutions() {
   const solutionsRef = useRef(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   const solutions = [
     {
@@ -76,6 +78,57 @@ export default function ServicesSolutions() {
     }
   ];
 
+  // Calculate pagination
+  const totalPages = Math.ceil(solutions.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentSolutions = solutions.slice(startIndex, endIndex);
+
+  // Handle page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    // Scroll to top of solutions section
+    if (solutionsRef.current) {
+      solutionsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisiblePages = 5;
+    
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+    
+    return pages;
+  };
+
   useEffect(() => {
     // Solutions animation
     gsap.fromTo(solutionsRef.current.children,
@@ -96,7 +149,7 @@ export default function ServicesSolutions() {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
+  }, [currentPage]); // Re-run animation when page changes
 
   return (
     <section className="solutions-section" ref={solutionsRef}>
@@ -107,7 +160,7 @@ export default function ServicesSolutions() {
         </div>
         
         <div className="solutions-grid">
-          {solutions.map((solution) => (
+          {currentSolutions.map((solution) => (
             <div key={solution.id} className="solution-card">
               <div className="solution-image">
                 <img src={solution.image} alt={solution.title} />
@@ -189,6 +242,46 @@ export default function ServicesSolutions() {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button 
+              className="pagination-btn prev"
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="15,18 9,12 15,6"/>
+              </svg>
+              Önceki
+            </button>
+            
+            <div className="pagination-numbers">
+              {getPageNumbers().map((page, index) => (
+                <button
+                  key={index}
+                  className={`pagination-number ${page === currentPage ? 'active' : ''} ${page === '...' ? 'dots' : ''}`}
+                  onClick={() => typeof page === 'number' && handlePageChange(page)}
+                  disabled={page === '...'}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            
+            <button 
+              className="pagination-btn next"
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Sonraki
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9,18 15,12 9,6"/>
+              </svg>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

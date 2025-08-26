@@ -7,7 +7,6 @@ export default function Services() {
   return (
     <div className="services-page">
       <ServicesSolutions />
-      <ServicesCTA />
     </div>
   );
 }
