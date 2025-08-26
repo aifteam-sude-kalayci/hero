@@ -23,11 +23,7 @@
 
 /* Contact Information */
 .contact-info {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f0f0f0;
+  padding:0px 0px  2.5rem;
 }
 
 .contact-info h2 {

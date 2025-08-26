@@ -81,21 +81,6 @@ export default function Hero() {
               </Link>
             </div>
           </div>
-          
-          <div className="hero-stats">
-            <div className="stat-item">
-              <div className="stat-number">500+</div>
-              <div className="stat-label">Mutlu Müşteri</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">1000+</div>
-              <div className="stat-label">Tamamlanan Proje</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">5+</div>
-              <div className="stat-label">Yıllık Deneyim</div>
-            </div>
-          </div>
         </div>
       </div>
       

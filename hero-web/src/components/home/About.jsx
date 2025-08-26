@@ -85,7 +85,6 @@ export default function About() {
                   <circle cx="8.5" cy="8.5" r="1.5"/>
                   <path d="M21 15l-5-5L5 21"/>
                 </svg>
-                <span>HERO Ekibi</span>
               </div>
             </div>
           </div>

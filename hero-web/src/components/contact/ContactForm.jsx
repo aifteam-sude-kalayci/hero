@@ -206,7 +206,7 @@ export default function ContactForm() {
                 </div>
                 <div className="info-content">
                   <h3>Adres</h3>
-                  <p>İstanbul, Türkiye</p>
+                  <p>Bursa, Türkiye</p>
                 </div>
               </div>
               
@@ -218,7 +218,7 @@ export default function ContactForm() {
                 </div>
                 <div className="info-content">
                   <h3>Telefon</h3>
-                  <p>+90 (212) 555 0123</p>
+                  <p>+90 (555) 123-45-67</p>
                 </div>
               </div>
               
@@ -340,7 +340,6 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="5"
-                  placeholder="Projeniz hakkında bilgi verin..."
                 ></textarea>
               </div>
               

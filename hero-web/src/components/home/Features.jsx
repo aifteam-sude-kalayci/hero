@@ -141,21 +141,6 @@ export default function Features() {
             </div>
           ))}
         </div>
-
-        <div className="features-stats">
-          <div className="stat-item">
-            <div className="stat-number">%99.9</div>
-            <div className="stat-label">Uptime Garantisi</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-number">24s</div>
-            <div className="stat-label">Ortalama Yükleme Süresi</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-number">%100</div>
-            <div className="stat-label">Müşteri Memnuniyeti</div>
-          </div>
-        </div>
       </div>
     </section>
   );

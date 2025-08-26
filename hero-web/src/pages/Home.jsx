@@ -1,10 +1,10 @@
 import Clients from "../components/Clients";
 import Slider from "../components/Slider";
-import Hero from "../components/Hero";
-import About from "../components/About";
-import Services from "../components/Services";
-import Features from "../components/Features";
-import Testimonials from "../components/Testimonials";
+import Hero from "../components/home/Hero";
+import About from "../components/home/About";
+import Services from "../components/home/Services";
+import Features from "../components/home/Features";
+import Testimonials from "../components/home/Testimonials";
 
 export default function Home() {
   return (
@@ -13,7 +13,6 @@ export default function Home() {
       <About />
       <Services />
       <Features />
-
     </div>
   );
 }
