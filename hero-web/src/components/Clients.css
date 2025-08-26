@@ -1,12 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 .clients-section {
-  padding-block: min(20vh, 2rem);
+  padding: 100px 0;
+  background: white;
+  position: relative;
   width: 100%;
   max-width: 76.5rem;
   margin-inline: auto;
   color: #111;
   font-family: "Lato", sans-serif;
+}
+
+.clients-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+}
+
+/* Section Header Styles */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
 .clients-section h2 {
@@ -19,65 +38,76 @@
 }
 
 .clients-grid {
-  margin-top: 5em;
+  margin-top: 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   width: 100%;
 }
 
 /* Kartlar */
 .clients-grid .card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
+.clients-grid .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
 /* Card içeriği */
 .clients-section .content {
-  padding: 0.938rem 0.625rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  text-align: center;
 }
 
 /* Başlık ve paragraf için satır sınırı ve ... */
 .clients-section .content h3 {
-  text-transform: capitalize;
-  font-size: clamp(1.5rem, 1.3909rem + 0.4364vw, 1.8rem);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: 'Saira Extra Condensed', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .clients-section .content p {
-  margin: 0.625rem 0 1.25rem;
-  color: #565656;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin: 0;
+  color: #666;
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 /* Card görsel ve icon ayarları */
 .clients-section .card-inner {
   position: relative;
   width: 100%;
-  height: 18.75rem;
+  height: 200px;
   background: var(--clr);
-  border-radius: 1.25rem;
-  border-bottom-right-radius: 0;
+  border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
 .clients-section .box {
   width: 100%;
   height: 100%;
   background: #fff;
-  border-radius: 1.25rem;
+  border-radius: 12px;
   overflow: hidden;
   position: relative;
 }
@@ -145,4 +175,46 @@
 .clients-section .iconBox span {
   color: #fff;
   font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 60px 0;
+  }
+  
+  .clients-section h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .clients-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .clients-grid .card {
+    padding: 1.5rem;
+  }
+  
+  .clients-section .content h3 {
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .clients-section .content p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
 }

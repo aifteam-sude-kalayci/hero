@@ -19,16 +19,20 @@
 }
 
 .footer-logo a {
-  font-size: 2rem;
-  font-weight: 700;
   text-decoration: none;
-  color: #667eea;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   margin-bottom: 16px;
   display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.footer-logo img {
+  height: 50px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.footer-logo a:hover img {
+  transform: scale(1.05);
 }
 
 .footer-description {
@@ -57,7 +61,7 @@
 }
 
 .social-link:hover {
-  background: #667eea;
+  background: var(--primary-blue);
   color: white;
   transform: translateY(-2px);
 }
@@ -80,7 +84,7 @@
 }
 
 .footer-links a:hover {
-  color: #667eea;
+  color: var(--primary-blue);
   padding-left: 8px;
 }
 
@@ -131,7 +135,7 @@
 }
 
 .footer-bottom-links a:hover {
-  color: #667eea;
+  color: var(--primary-blue);
 }
 
 /* Responsive Design */

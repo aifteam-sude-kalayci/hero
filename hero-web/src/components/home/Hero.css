@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background:linear-gradient(135deg, #319fff 0%, #72f8ff 100%);
 }
 
 .hero-background {
@@ -80,7 +80,7 @@
 }
 
 .hero-title .highlight {
-  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  background: linear-gradient(45deg, #ffffff, #57ddfe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -157,7 +157,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 8px;
-  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  background: var(--gradient-light);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

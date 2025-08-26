@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import SplitType from "split-type";
+import logo from "../../assets/logo/logo.svg";
 import "./Header.css";
 
 const Header = () => {
@@ -19,7 +20,7 @@ const Header = () => {
       <header>
         <div className="header-inner">
           <NavLink to="/" className="logo">
-            HERO
+            <img src={logo} alt="HERO Logo" />
           </NavLink>
           <ul className="nav-links">
             <li>

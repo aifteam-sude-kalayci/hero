@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from "../../assets/logo/logo.svg";
 import './Footer.css';
 
 export default function Footer() {
@@ -9,7 +10,9 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-section">
             <div className="footer-logo">
-              <Link to="/">HERO</Link>
+              <Link to="/">
+                <img src={logo} alt="HERO Logo" />
+              </Link>
             </div>
             <p className="footer-description">
               Dijital dünyada işletmelerin başarısı için çalışıyoruz. 

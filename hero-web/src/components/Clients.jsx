@@ -6,7 +6,10 @@ import webtkImg from '../assets/slider/web-tk.jpg';
 export default function Clients() {
   return (
     <section className="clients-section">
-      <h2>Yazılım<br />Çözümlerimiz</h2>
+      <div className="section-header">
+        <h2>Yazılım<br />Çözümlerimiz</h2>
+        <p className="section-subtitle">Müşterilerimiz için geliştirdiğimiz yenilikçi yazılım çözümleri</p>
+      </div>
       <div className="clients-grid">
         <div className="card">
           <div className="card-inner" style={{ "--clr": "#fff" }}>
