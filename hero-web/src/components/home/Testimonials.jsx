@@ -9,45 +9,45 @@ const testimonials = [
   {
     id: 1,
     name: "Ahmet Yılmaz",
-    position: "CEO, TechStart",
-    company: "TechStart",
-    content: "HERO ile çalışmak gerçekten harika bir deneyimdi. Web sitemizi sıfırdan tasarladılar ve sonuç muhteşem. Müşteri hizmetleri de çok profesyonel.",
+    position: "İK Müdürü",
+    company: "TechCorp",
+    content: "İK süreçlerimizi bu platform ile dijitalleştirdik. Personel yönetimi artık çok daha kolay ve verimli. Özellikle izin ve masraf yönetimi modülleri harika.",
     rating: 5,
     avatar: "AY"
   },
   {
     id: 2,
     name: "Ayşe Demir",
-    position: "Pazarlama Müdürü",
-    company: "RestoranPlus",
-    content: "QR menü sistemimizi HERO'ya yaptırdık. Hem kullanıcı dostu hem de çok pratik. Müşterilerimiz çok memnun, biz de çok memnunuz.",
+    position: "İnsan Kaynakları Uzmanı",
+    company: "HR Solutions",
+    content: "Kullanıcı dostu arayüzü ve kapsamlı özellikleri ile İK süreçlerimizi tamamen otomatikleştirdik. Raporlama özellikleri de çok detaylı.",
     rating: 5,
     avatar: "AD"
   },
   {
     id: 3,
     name: "Mehmet Kaya",
-    position: "Kurucu",
-    company: "DigitalAgency",
-    content: "Sosyal medya yönetimi hizmeti aldık. Takipçi sayımız ve etkileşim oranlarımız inanılmaz arttı. Kesinlikle tavsiye ederim.",
+    position: "Genel Müdür",
+    company: "Manufacturing Co.",
+    content: "200+ çalışanımızın tüm İK süreçlerini bu platform ile yönetiyoruz. Avans sistemi ve masraf takibi özellikle çok pratik.",
     rating: 5,
     avatar: "MK"
   },
   {
     id: 4,
     name: "Fatma Özkan",
-    position: "İşletme Sahibi",
-    company: "Boutique Hotel",
-    content: "Rezervasyon sistemimizi HERO'ya yaptırdık. Artık online rezervasyonlarımız çok daha kolay. Teknik destek de her zaman yanımızda.",
+    position: "İK Direktörü",
+    company: "Retail Group",
+    content: "Çoklu şube yapımızda tüm personel verilerini merkezi olarak yönetebiliyoruz. Departman organizasyonu modülü mükemmel çalışıyor.",
     rating: 5,
     avatar: "FÖ"
   },
   {
     id: 5,
     name: "Can Arslan",
-    position: "Yazılım Geliştirici",
-    company: "StartupXYZ",
-    content: "Mobil uygulamamızı HERO ile geliştirdik. Hem iOS hem Android'de mükemmel çalışıyor. Kod kalitesi ve performans gerçekten üst seviye.",
+    position: "İşletme Sahibi",
+    company: "Startup Inc.",
+    content: "Küçük bir şirket olarak İK süreçlerimizi profesyonel bir şekilde yönetmek istiyorduk. Bu platform tam ihtiyacımız olan çözümü sundu.",
     rating: 5,
     avatar: "CA"
   }
@@ -101,12 +101,12 @@ export default function Testimonials() {
       <div className="container">
         <div className="testimonials-header">
           <h2 ref={titleRef} className="section-title">
-            Müşterilerimiz
+            Kullanıcılarımız
             <span className="highlight"> Ne Diyor?</span>
           </h2>
           <p className="section-subtitle">
-            Başarılı projelerimiz ve mutlu müşterilerimiz. İşte HERO ile çalışan 
-            müşterilerimizin deneyimleri ve yorumları.
+            Platformumuzu kullanan şirketlerin deneyimleri ve başarı hikayeleri. 
+            İK süreçlerini dijitalleştiren müşterilerimizin yorumları.
           </p>
         </div>
 
@@ -172,15 +172,15 @@ export default function Testimonials() {
 
         <div className="testimonials-stats">
           <div className="stat-item">
-            <div className="stat-number">500+</div>
-            <div className="stat-label">Mutlu Müşteri</div>
+            <div className="stat-number">250+</div>
+            <div className="stat-label">Aktif Şirket</div>
           </div>
           <div className="stat-item">
             <div className="stat-number">4.9/5</div>
-            <div className="stat-label">Ortalama Puan</div>
+            <div className="stat-label">Kullanıcı Puanı</div>
           </div>
           <div className="stat-item">
-            <div className="stat-number">%100</div>
+            <div className="stat-number">%98</div>
             <div className="stat-label">Memnuniyet Oranı</div>
           </div>
         </div>

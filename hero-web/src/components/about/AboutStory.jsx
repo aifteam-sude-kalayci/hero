@@ -36,30 +36,15 @@ export default function AboutStory() {
           <div className="story-text">
             <h2 className="section-title">Hikayemiz</h2>
             <p>
-              2025 yılında kurulan HERO, dijital dönüşümün önemini kavrayarak
-              işletmelerin dijital varlıklarını güçlendirmek amacıyla yola çıktı.
-              Küçük bir ekiple başladığımız yolculuğumuzda, bugün 500'den fazla
-              mutlu müşteriye hizmet veriyoruz.
+             Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis obcaecati.
+              Quo modi illo dolore, voluptatum delectus accusantium. Laborum voluptatum temporibus similique,
+               a commodi molestiae nulla molestias aliquam ducimus!
             </p>
             <p>
-              Teknoloji ve yaratıcılığı bir araya getirerek, her projeye özel
-              çözümler üretiyoruz. Müşterilerimizin başarısı bizim başarımızdır
-              anlayışıyla, her adımda yanlarında oluyoruz.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis obcaecati.
+            Quo modi illo dolore, voluptatum delectus accusantium. Laborum voluptatum temporibus similique,
             </p>
-            <div className="story-stats">
-              <div className="story-stat">
-                <div className="stat-number">2025</div>
-                <div className="stat-label">Kuruluş Yılı</div>
-              </div>
-              <div className="story-stat">
-                <div className="stat-number">50+</div>
-                <div className="stat-label">Uzman Ekip</div>
-              </div>
-              <div className="story-stat">
-                <div className="stat-number">25+</div>
-                <div className="stat-label">Sektör</div>
-              </div>
-            </div>
+            
           </div>
           <div className="story-image">
             <div className="image-placeholder">

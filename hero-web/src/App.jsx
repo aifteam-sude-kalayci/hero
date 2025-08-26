@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import Register from './pages/Register';
 import MainLayout from './layouts/MainLayout';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/hakkimizda" element={<About />} />
         <Route path="/hizmetler" element={<Services />} />
         <Route path="/iletisim" element={<Contact />} />
+        <Route path="/kayit-ol" element={<Register />} />
       </Routes>
     </MainLayout>
   )

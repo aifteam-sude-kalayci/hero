@@ -67,33 +67,332 @@
 }
 
 .hero-text {
-  margin-bottom: 0;
+  margin-bottom: 60px;
 }
 
-.hero-title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 700;
+.hero-devices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  position: relative;
+}
+
+.device-slider {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.device-nav {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
   color: white;
-  margin-bottom: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-.hero-title .highlight {
-  background: linear-gradient(45deg, #ffffff, #57ddfe);
+.device-nav:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.device-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.device-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.device-frame {
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+  margin: 20px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+.device-frame:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4));
+}
+
+/* iPhone X Frame */
+.device-frame.iphonex {
+  width: 360px;
+  height: 720px;
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.device-frame.iphonex::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: #000;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.device-frame.iphonex .device-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* iPad Frame */
+.device-frame.ipad {
+  width: 800px;
+  height: 600px;
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+  border-radius: 30px;
+  padding: 15px;
+  box-shadow: 
+    0 35px 70px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.device-frame.ipad::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.device-frame.ipad .device-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+
+/* MacBook Pro Frame */
+.device-frame.macbookpro {
+  width: 960px;
+  height: 600px;
+  background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
+  border-radius: 20px 20px 0 0;
+  padding: 12px;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.device-frame.macbookpro::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 20px;
+  background: #1a1a1a;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.device-frame.macbookpro .device-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  overflow: hidden;
+  background: #000;
+}
+
+.device-frame .device-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.device-info {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 15px 25px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 200px;
+}
+
+.device-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #4facfe 0%, #5bcbd1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.hero-subtitle {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
-  padding-bottom: 20px;
-  margin: 0 auto;
-  line-height: 1.6;
+.device-subtitle {
+  font-size: 0.9rem;
   font-weight: 400;
+  margin: 0;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+.device-indicators {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.indicator.active {
+  background: linear-gradient(135deg, #4facfe, #5bcbd1);
+  border-color: transparent;
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
+}
+
+.indicator:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 30px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title-line {
+  display: block;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideInUp 0.8s ease forwards;
+}
+
+.title-line:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.hero-title .highlight {
+  background: linear-gradient(135deg, #4facfe 0%, #5bcbd1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.hero-title .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(135deg, #4facfe 0%, #5bcbd1);
+  border-radius: 2px;
+  transform: scaleX(0);
+  animation: expandLine 1s ease forwards 0.5s;
+}
+
+@keyframes slideInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes expandLine {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+  padding-bottom: 30px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subtitle-line {
+  display: block;
+  transform: translateY(15px);
+  opacity: 0;
+  animation: slideInUp 0.6s ease forwards;
+}
+
+.subtitle-line:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.subtitle-line:nth-child(3) {
+  animation-delay: 0.2s;
 }
 
 .hero-cta {
@@ -220,6 +519,37 @@
   
   .stat-number {
     font-size: 2rem;
+  }
+  
+  .hero-devices {
+    margin-top: 40px;
+  }
+  
+  .device-slider {
+    gap: 20px;
+  }
+  
+  .device-nav {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .device-frame {
+    transform: scale(0.8);
+  }
+  
+  .device-info {
+    bottom: -50px;
+    padding: 12px 20px;
+    min-width: 180px;
+  }
+  
+  .device-title {
+    font-size: 1rem;
+  }
+  
+  .device-subtitle {
+    font-size: 0.8rem;
   }
 }
 

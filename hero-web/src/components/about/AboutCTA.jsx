@@ -7,10 +7,10 @@ export default function AboutCTA() {
     <section className="about-cta">
       <div className="container">
         <div className="cta-content">
-          <h2>Projenizi Hayata Geçirelim</h2>
+          <h2>Lorem İpsum</h2>
           <p>
-            Dijital dönüşüm yolculuğunuzda size yardımcı olmak için buradayız.
-            Hemen iletişime geçin ve projenizi birlikte gerçekleştirelim.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quod! Vel, 
+            nam. Minus perspiciatis eveniet quasi corrupti sapiente alias blanditiis repellendus,
           </p>
           <div className="cta-buttons">
             <Link to="/iletisim" className="cta-btn primary">

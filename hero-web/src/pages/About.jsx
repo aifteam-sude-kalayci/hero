@@ -10,7 +10,7 @@ export default function About() {
     <div className="about-page">
       <AboutStory />
       <AboutValues />
-      <Clients />
+  
     </div>
   );
 }

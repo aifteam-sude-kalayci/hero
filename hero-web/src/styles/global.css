@@ -39,7 +39,7 @@
 html, body {
   overflow-x: hidden;
   background: #fff;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif !important; 
   color: #000;
 }
 

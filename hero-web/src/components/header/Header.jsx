@@ -36,6 +36,11 @@ const Header = () => {
               <NavLink to="/iletisim">İletişim</NavLink>
             </li>
           </ul>
+          <div className="header-actions">
+            <NavLink to="/kayit-ol" className="btn btn-primary">
+              Kayıt Ol
+            </NavLink>
+          </div>
         </div>
       </header>
     </>
