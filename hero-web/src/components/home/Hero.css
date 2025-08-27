@@ -975,23 +975,23 @@
   
   /* Mobile GIF adjustments */
   .floating-gif {
-    width: 200px !important;
-    height: 200px !important;
+    width: 280px !important;
+    height: 280px !important;
   }
   
   .right-gif .floating-gif {
-    width: 200px !important;
-    height: 200px !important;
+    width: 280px !important;
+    height: 280px !important;
   }
   
   .left-gif {
-    left: -50px;
-    top: 90%;
+    left: -80px;
+    top: 85%;
   }
   
   .right-gif {
-    right: -50px;
-    top: 80%;
+    right: -80px;
+    top: 75%;
   }
 }
 
@@ -1073,23 +1073,23 @@
   
   /* Small mobile GIF adjustments */
   .floating-gif {
-    width: 60px !important;
-    height: 60px !important;
+    width: 150px !important;
+    height: 150px !important;
   }
   
   .right-gif .floating-gif {
-    width: 60px !important;
-    height: 60px !important;
+    width: 150px !important;
+    height: 150px !important;
   }
   
   .left-gif {
     left: -40px;
-    top: 50%;
+    top: 90%;
   }
   
   .right-gif {
     right: -40px;
-    top: 50%;
+    top: 90%;
   }
   
   .device-nav {
@@ -1126,35 +1126,5 @@
   }
 }
 
-/* Extra small screens */
-@media (max-width: 320px) {
-  .floating-gif {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .right-gif .floating-gif {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .left-gif {
-    left: -35px;
-    top: 50%;
-  }
-  
-  .right-gif {
-    right: -35px;
-    top: 50%;
-  }
-  
-  .hero-devices {
-    height: 450px;
-  }
-  
-  .device-slider {
-    height: 350px;
-  }
-}
 
 
