@@ -7,7 +7,6 @@ export default function ContactForm() {
     email: '',
     phone: '',
     company: '',
-    service: '',
     message: ''
   });
   const [errors, setErrors] = useState({});
@@ -146,7 +145,6 @@ export default function ContactForm() {
         email: '',
         phone: '',
         company: '',
-        service: '',
         message: ''
       });
       
@@ -254,23 +252,7 @@ export default function ContactForm() {
               </div>
             </div>
             
-            <div className="form-group">
-              <label htmlFor="service">Hizmet Türü</label>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
-                onChange={handleInputChange}
-              >
-                <option value="">Hizmet seçiniz</option>
-                <option value="web-design">Web Tasarım</option>
-                <option value="mobile-app">Mobil Uygulama</option>
-                <option value="social-media">Sosyal Medya</option>
-                <option value="graphic-design">Grafik Tasarım</option>
-                <option value="digital-marketing">Dijital Pazarlama</option>
-                <option value="other">Diğer</option>
-              </select>
-            </div>
+
             
             <div className="form-group">
               <label htmlFor="message">Mesaj</label>
