@@ -66,6 +66,13 @@ const Header = () => {
 
         {/* Menü Linkleri */}
         <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+          {/* Mobile Logo */}
+          <div className="mobile-logo">
+            <NavLink to="/" onClick={() => setMenuOpen(false)}>
+              <img src={logo} alt="HERO Logo" />
+            </NavLink>
+          </div>
+          
           <ul>
             <li>
               <NavLink to="/" onClick={() => setMenuOpen(false)}>Anasayfa</NavLink>
@@ -78,6 +85,9 @@ const Header = () => {
             </li>
             <li>
               <NavLink to="/iletisim" onClick={() => setMenuOpen(false)}>İletişim</NavLink>
+            </li>
+            <li className="mobile-only">
+              <NavLink to="/kayit-ol" onClick={() => setMenuOpen(false)}>Kayıt Ol</NavLink>
             </li>
           </ul>
         </nav>

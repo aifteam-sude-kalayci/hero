@@ -183,6 +183,13 @@ header.scrolled {
   }
 }
 
+/* Hide mobile-only elements on desktop */
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   header {
     padding: 12px 20px;
@@ -205,10 +212,62 @@ header.scrolled {
     backdrop-filter: blur(30px);
     width: 280px;
     height: 100vh;
-    padding: 80px 30px 30px;
+    padding: 0;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Mobile Logo */
+  .mobile-logo {
+    padding: 25px 0px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+    flex-shrink: 0;
+  }
+
+  .mobile-logo img {
+    height: 35px;
+    width: auto;
+    display: block;
+  }
+
+  /* Mobile Register Button */
+  .mobile-register-btn {
+    display: none; /* Hide by default */
+    padding: 25px 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+    margin-top: auto;
+    flex-shrink: 0;
+  }
+
+  .mobile-register-btn .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4facfe 0%, #5bcbd1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+  }
+
+  .mobile-register-btn .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+  }
+
+  /* Show mobile register button only on mobile */
+  @media (max-width: 768px) {
+    .mobile-register-btn {
+      display: block;
+    }
   }
 
   .header-inner .nav-links.active {
@@ -219,11 +278,15 @@ header.scrolled {
     flex-direction: column;
     gap: 0;
     width: 100%;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    list-style: none;
   }
 
   .header-inner .nav-links li {
     width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   .header-inner .nav-links li:last-child {
@@ -232,18 +295,39 @@ header.scrolled {
 
   .header-inner .nav-links li a {
     height: auto;
-    padding: 20px 0;
+    padding: 18px 30px;
     font-size: 1rem;
+    font-weight: 500;
     text-align: left;
     width: 100%;
     display: block;
+    color: #1a202c;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
   }
 
   .header-inner .nav-links li a:hover {
-    transform: translateX(10px);
+    background: rgba(79, 172, 254, 0.08);
+    color: #4facfe;
+    transform: translateX(5px);
+  }
+
+  .header-inner .nav-links li a.active {
     background: rgba(79, 172, 254, 0.1);
-    padding-left: 15px;
-    border-radius: 8px;
+    color: #4facfe;
+    border-right: 3px solid #4facfe;
+  }
+
+  /* Mobile-only Kayıt Ol link styling */
+  .header-inner .nav-links li.mobile-only a {
+    color: #4facfe;
+    font-weight: 600;
+  }
+
+  .header-inner .nav-links li.mobile-only a:hover {
+    background: rgba(79, 172, 254, 0.1);
+    color: #4facfe;
   }
 
   /* Disable SplitType effects on mobile */
@@ -256,64 +340,17 @@ header.scrolled {
   }
 
   .header-actions {
-    display: none;
+    display: none; /* Hide on mobile */
   }
 
-  /* Mobile Actions */
-  .mobile-actions {
-    padding: 25px 30px 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  /* Show header actions on desktop */
+  @media (min-width: 769px) {
+    .header-actions {
+      display: flex;
+    }
   }
 
-  .mobile-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #4facfe 0%, #5bcbd1 100%);
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
-    position: relative;
-    overflow: hidden;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-  }
 
-  .mobile-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s;
-  }
-
-  .mobile-btn:hover::before {
-    left: 100%;
-  }
-
-  .mobile-btn:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(79, 172, 254, 0.4);
-  }
-
-  .mobile-btn:active {
-    transform: translateY(-2px) scale(0.98);
-  }
-
-  .btn-text {
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    position: relative;
-    z-index: 1;
-  }
 }
 
 @media (max-width: 480px) {
@@ -338,25 +375,26 @@ header.scrolled {
     right: 0;
   }
 
-  .header-inner .nav-links {
-    padding: 70px 20px 20px;
+  .mobile-logo {
+    padding: 20px 20px;
   }
 
-  .mobile-actions {
-    padding: 20px 20px 25px;
+  .mobile-logo img {
+    height: 30px;
   }
 
-  .mobile-btn {
-    padding: 16px 20px;
+  .mobile-register-btn {
+    padding: 20px 20px;
   }
 
-  .btn-text {
-    font-size: 1rem;
+  .mobile-register-btn .btn {
+    padding: 14px 20px;
+    font-size: 0.95rem;
   }
 
   .header-inner .nav-links li a {
     font-size: 0.95rem;
-    padding: 18px 0;
+    padding: 16px 20px;
   }
 
   .menu-toggle {
