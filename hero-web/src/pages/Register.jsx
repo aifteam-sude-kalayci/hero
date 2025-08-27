@@ -65,7 +65,7 @@ export default function Register() {
       <div className="container">
         <div className="register-content">
           <div className="register-header">
-            <h1>Hesap Oluşturun</h1>
+            <h1>Kayıt Olun</h1>
             <p>İnsan Kaynakları platformumuza katılın ve tüm İK süreçlerinizi dijitalleştirin</p>
           </div>
           
@@ -161,18 +161,9 @@ export default function Register() {
                 </label>
               </div>
               
-              <div className="form-group checkbox-group">
-                <label className="checkbox-label">
-                  <input type="checkbox" name="newsletter" />
-                  <span className="checkmark"></span>
-                  <span className="checkbox-text">
-                    E-posta ile güncellemeler ve özel teklifler almak istiyorum
-                  </span>
-                </label>
-              </div>
               
               <button type="submit" className="btn btn-primary register-btn">
-                Hesap Oluştur
+                Kayıt Ol
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>

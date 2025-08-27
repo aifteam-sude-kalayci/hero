@@ -8,64 +8,163 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const heroRef = useRef(null);
-  const titleRef = useRef(null);
-  const ctaRef = useRef(null);
+  const sliderRef = useRef(null);
   const [currentDevice, setCurrentDevice] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
   const devices = [
     {
       type: 'iPhoneX',
-      image: '/src/assets/slider/mobil.jpg'
-    },
-    {
-      type: 'iPad',
-      image: '/src/assets/slider/grafik.jpg'
+      image: '/src/assets/iphone.jpg',
+      title: 'Mobil Uygulama',
+      subtitle: 'Modern ve kullanıcı dostu mobil deneyim'
     },
     {
       type: 'MacBookPro',
-      image: '/src/assets/slider/web-tk.jpg'
+      image: '/src/assets/web.jpg',
+      title: 'Web Tasarım',
+      subtitle: 'Responsive ve modern web tasarım hizmetleri'
     }
   ];
 
+  // Check if mobile device
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const totalSlides = 2; // 2 slides total
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      
+      // Reset to first slide when switching between mobile/desktop
+      if (mobile !== isMobile) {
+        setCurrentDevice(0);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobile]);
+
   const nextDevice = () => {
-    setCurrentDevice((prev) => (prev + 1) % devices.length);
+    const nextIndex = (currentDevice + 1) % totalSlides;
+    animateDeviceTransition(nextIndex);
   };
 
   const prevDevice = () => {
-    setCurrentDevice((prev) => (prev - 1 + devices.length) % devices.length);
+    const prevIndex = (currentDevice - 1 + totalSlides) % totalSlides;
+    animateDeviceTransition(prevIndex);
+  };
+
+  // Touch handlers for swipe
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextDevice();
+    }
+    if (isRightSwipe) {
+      prevDevice();
+    }
+  };
+
+  const animateDeviceTransition = (newIndex) => {
+    // Animate out current devices with staggered timing
+    const currentDevices = document.querySelectorAll('.device-frame');
+    
+    gsap.to(currentDevices, {
+      y: -80,
+      opacity: 0,
+      scale: 0.7,
+      rotation: newIndex === 1 ? -15 : 15, // Add rotation for smooth transition
+      duration: 0.8,
+      ease: "power3.inOut",
+      stagger: 0.1,
+      onComplete: () => {
+        setCurrentDevice(newIndex);
+        
+        // Small delay for state update
+        setTimeout(() => {
+          const newDevices = document.querySelectorAll('.device-frame');
+          
+          // Animate in new devices with enhanced effects
+          gsap.fromTo(newDevices, 
+            {
+              y: 80,
+              opacity: 0,
+              scale: 0.7,
+              rotation: newIndex === 1 ? 15 : -15
+            },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              rotation: 0,
+              duration: 1.2,
+              ease: "back.out(1.7)",
+              stagger: 0.15
+            }
+          );
+        }, 50);
+      }
+    });
+
+
+
+    // Enhanced device info animation
+    const deviceInfo = document.querySelector('.device-info');
+    if (deviceInfo) {
+      gsap.to(deviceInfo, {
+        y: 30,
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.5,
+        ease: "power3.inOut",
+        onComplete: () => {
+          gsap.to(deviceInfo, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.7,
+            ease: "back.out(1.4)",
+            delay: 0.3
+          });
+        }
+      });
+    }
   };
 
   useEffect(() => {
-    const tl = gsap.timeline();
-    
-         // Hero text animations with stagger
-     tl.fromTo(titleRef.current, 
-       { y: 100, opacity: 0, scale: 0.8 },
-       { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "back.out(1.7)" }
-     )
-     .fromTo(ctaRef.current,
-       { y: 30, opacity: 0, scale: 0.9 },
-       { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },
-       "-=0.6"
-     );
-
     // Device slider animation
     gsap.fromTo('.device-frame',
       { y: 50, opacity: 0, scale: 0.8 },
       { y: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)", delay: 0.5 }
     );
 
-    // Navigation buttons animation
-    gsap.fromTo('.device-nav',
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)", delay: 0.8, stagger: 0.1 }
-    );
+
 
     // Indicators animation
     gsap.fromTo('.indicator',
       { scale: 0, opacity: 0 },
       { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)", delay: 1, stagger: 0.1 }
     );
+
+
 
     // Parallax effect
     const handleScroll = () => {
@@ -80,34 +179,17 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto slider effect with GSAP animations
+  // Auto slider effect with enhanced GSAP animations
   useEffect(() => {
     const interval = setInterval(() => {
-      const nextIndex = (currentDevice + 1) % devices.length;
+      const nextIndex = (currentDevice + 1) % totalSlides;
       
-      // Animate out current device
-      gsap.to('.device-frame', {
-        y: -30,
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.4,
-        ease: "power2.in",
-        onComplete: () => {
-          setCurrentDevice(nextIndex);
-          // Animate in new device
-          gsap.to('.device-frame', {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            ease: "back.out(1.4)"
-          });
-        }
-      });
-    }, 4000); // Change device every 4 seconds
+      // Use the same enhanced animation function
+      animateDeviceTransition(nextIndex);
+    }, 5000); // Change device every 5 seconds for better user experience
 
     return () => clearInterval(interval);
-  }, [currentDevice, devices.length]);
+  }, [currentDevice, totalSlides]);
 
   return (
     <section className="hero" ref={heroRef}>
@@ -129,46 +211,51 @@ export default function Hero() {
 
           
           <div className="hero-devices">
-            <div className="device-slider">
-              <button className="device-nav prev" onClick={prevDevice}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M15 18l-6-6 6-6"/>
-                </svg>
-              </button>
-              
-                             <div className="device-container">
-                 {devices[currentDevice] && (
-                   <div className={`device-frame ${devices[currentDevice].type.toLowerCase()}`}>
-                     <div className="device-screen">
-                       <img 
-                         src={devices[currentDevice].image} 
-                         alt={devices[currentDevice].title}
-                       />
-                     </div>
-                     <div className="device-info">
-                       <h3 className="device-title">{devices[currentDevice].title}</h3>
-                       <p className="device-subtitle">{devices[currentDevice].subtitle}</p>
-                     </div>
-                   </div>
-                 )}
-               </div>
-              
-              <button className="device-nav next" onClick={nextDevice}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M9 18l6-6-6-6"/>
-                </svg>
-              </button>
-            </div>
+                                                   <div 
+                className="device-slider" 
+                ref={sliderRef}
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+              >
+                <div className="device-container">
+                  {currentDevice === 0 ? (
+                    <>
+                      {/* First slider: Phone */}
+                      <div className="device-frame iphonex phone-device">
+                        <div className="device-screen">
+                          <img 
+                            src={devices[0].image} 
+                            alt={devices[0].title}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Second slider: MacBook */}
+                      <div className="device-frame macbookpro laptop-device">
+                        <div className="device-screen">
+                          <img 
+                            src={devices[1].image} 
+                            alt={devices[1].title}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
             
-            <div className="device-indicators">
-              {devices.map((_, index) => (
-                <button
-                  key={index}
-                  className={`indicator ${index === currentDevice ? 'active' : ''}`}
-                  onClick={() => setCurrentDevice(index)}
-                />
-              ))}
-            </div>
+                         <div className="device-indicators">
+               {Array.from({ length: totalSlides }, (_, index) => (
+                 <button
+                   key={index}
+                   className={`indicator ${index === currentDevice ? 'active' : ''}`}
+                   onClick={() => animateDeviceTransition(index)}
+                 />
+               ))}
+             </div>
           </div>
         </div>
       </div>      
