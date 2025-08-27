@@ -4,6 +4,14 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Hero.css';
 
+// Import assets
+import iphoneImg from '../../assets/iphone.jpg';
+import webImg from '../../assets/web.jpg';
+import heroAiGif from '../../assets/maskot pozları/gifs/hero-ai.gif';
+import girisCikisGif from '../../assets/maskot pozları/gifs/giris-cikis.gif';
+import izinSagGif from '../../assets/maskot pozları/gifs/izin-sag.gif';
+import izinGif from '../../assets/maskot pozları/gifs/izin.gif';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
@@ -16,19 +24,19 @@ export default function Hero() {
   const devices = [
     {
       type: 'iPhoneX',
-      image: '/src/assets/iphone.jpg',
+      image: iphoneImg,
       title: 'Mobil Uygulama',
       subtitle: 'Modern ve kullanıcı dostu mobil deneyim',
-      leftGif: '/src/assets/maskot pozları/gifs/hero-ai.gif',
-      rightGif: '/src/assets/maskot pozları/gifs/giris-cikis.gif'
+      leftGif: heroAiGif,
+      rightGif: girisCikisGif
     },
     {
       type: 'MacBookPro',
-      image: '/src/assets/web.jpg',
+      image: webImg,
       title: 'Web Tasarım',
       subtitle: 'Responsive ve modern web tasarım hizmetleri',
-      leftGif: '/src/assets/maskot pozları/gifs/izin-sag.gif',
-      rightGif: '/src/assets/maskot pozları/gifs/izin.gif'
+      leftGif: izinSagGif,
+      rightGif: izinGif
     }
   ];
 
@@ -193,18 +201,22 @@ export default function Hero() {
 
   useEffect(() => {
     // Device slider animation
-    gsap.fromTo('.device-frame',
-      { y: 50, opacity: 0, scale: 0.8 },
-      { y: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)", delay: 0.5 }
-    );
-
-
+    const deviceFrames = document.querySelectorAll('.device-frame');
+    if (deviceFrames.length > 0) {
+      gsap.fromTo(deviceFrames,
+        { y: 50, opacity: 0, scale: 0.8 },
+        { y: 0, opacity: 1, scale: 1, duration: 1, ease: "back.out(1.4)", delay: 0.5 }
+      );
+    }
 
     // Indicators animation
-    gsap.fromTo('.indicator',
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)", delay: 1, stagger: 0.1 }
-    );
+    const indicators = document.querySelectorAll('.indicator');
+    if (indicators.length > 0) {
+      gsap.fromTo(indicators,
+        { scale: 0, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)", delay: 1, stagger: 0.1 }
+      );
+    }
 
 
 
