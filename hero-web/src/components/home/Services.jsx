@@ -150,11 +150,8 @@ export default function Services() {
             <p>Modern bir işletme için gerekli olan tüm İK çözümlerini sunuyoruz. Hangi modüle ihtiyacınız olduğunu biliyor musunuz?</p>
           </div>
           <div className="cta-actions">
-            <Link to="/iletisim" className="btn btn-primary">
-              Ücretsiz Demo
-            </Link>
-            <Link to="/hizmetler" className="btn btn-outline">
-              Tüm Modüller
+            <Link to="/kayit-ol" className="btn btn-primary">
+              Kayıt Olun
             </Link>
           </div>
         </div>

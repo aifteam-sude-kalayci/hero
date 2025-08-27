@@ -18,13 +18,17 @@ export default function Hero() {
       type: 'iPhoneX',
       image: '/src/assets/iphone.jpg',
       title: 'Mobil Uygulama',
-      subtitle: 'Modern ve kullanıcı dostu mobil deneyim'
+      subtitle: 'Modern ve kullanıcı dostu mobil deneyim',
+      leftGif: '/src/assets/maskot pozları/gifs/hero-ai.gif',
+      rightGif: '/src/assets/maskot pozları/gifs/giris-cikis.gif'
     },
     {
       type: 'MacBookPro',
       image: '/src/assets/web.jpg',
       title: 'Web Tasarım',
-      subtitle: 'Responsive ve modern web tasarım hizmetleri'
+      subtitle: 'Responsive ve modern web tasarım hizmetleri',
+      leftGif: '/src/assets/maskot pozları/gifs/izin-sag.gif',
+      rightGif: '/src/assets/maskot pozları/gifs/izin.gif'
     }
   ];
 
@@ -86,6 +90,44 @@ export default function Hero() {
   const animateDeviceTransition = (newIndex) => {
     // Animate out current devices with staggered timing
     const currentDevices = document.querySelectorAll('.device-frame');
+    
+    // Add animation class to right gif and force reflow
+    const rightGif = document.querySelector('.right-gif .floating-gif');
+    if (rightGif) {
+      // Reset to initial position immediately
+      rightGif.style.cssText = 'animation: none !important; transform: translate(200px, -200px) scale(0.6) !important; opacity: 0 !important;';
+      
+      // Force reflow
+      rightGif.offsetHeight;
+      
+      // Add animation class
+      rightGif.classList.add('slider-change');
+      
+      // Remove class and inline styles after animation completes
+      setTimeout(() => {
+        rightGif.classList.remove('slider-change');
+        rightGif.style.cssText = '';
+      }, 1200);
+    }
+
+    // Add animation class to left gif and force reflow
+    const leftGif = document.querySelector('.left-gif .floating-gif');
+    if (leftGif) {
+      // Reset to initial position immediately
+      leftGif.style.cssText = 'animation: none !important; transform: translate(-200px, -200px) scale(0.6) !important; opacity: 0 !important;';
+      
+      // Force reflow
+      leftGif.offsetHeight;
+      
+      // Add animation class
+      leftGif.classList.add('slider-change');
+      
+      // Remove class and inline styles after animation completes
+      setTimeout(() => {
+        leftGif.classList.remove('slider-change');
+        leftGif.style.cssText = '';
+      }, 1000);
+    }
     
     gsap.to(currentDevices, {
       y: -80,
@@ -179,17 +221,17 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Auto slider effect with enhanced GSAP animations
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const nextIndex = (currentDevice + 1) % totalSlides;
-      
-      // Use the same enhanced animation function
-      animateDeviceTransition(nextIndex);
-    }, 5000); // Change device every 5 seconds for better user experience
+  // Auto slider effect disabled - phone shows first and stays
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     const nextIndex = (currentDevice + 1) % totalSlides;
+  //     
+  //     // Use the same enhanced animation function
+  //     animateDeviceTransition(nextIndex);
+  //   }, 5000); // Change device every 5 seconds for better user experience
 
-    return () => clearInterval(interval);
-  }, [currentDevice, totalSlides]);
+  //   return () => clearInterval(interval);
+  // }, [currentDevice, totalSlides]);
 
   return (
     <section className="hero" ref={heroRef}>
@@ -218,6 +260,15 @@ export default function Hero() {
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
               >
+                {/* Left side GIF - For both phone and web */}
+                <div className="side-gif left-gif">
+                  <img 
+                    src={devices[currentDevice].leftGif} 
+                    alt="Left GIF"
+                    className="floating-gif"
+                  />
+                </div>
+
                 <div className="device-container">
                   {currentDevice === 0 ? (
                     <>
@@ -244,6 +295,15 @@ export default function Hero() {
                       </div>
                     </>
                   )}
+                </div>
+
+                {/* Right side GIF - For both phone and web */}
+                <div className="side-gif right-gif">
+                  <img 
+                    src={devices[currentDevice].rightGif} 
+                    alt="Right GIF"
+                    className="floating-gif"
+                  />
                 </div>
               </div>
             

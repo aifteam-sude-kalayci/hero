@@ -91,7 +91,64 @@
   max-width: 1200px;
 }
 
+.device-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 10;
+  will-change: transform, background, box-shadow;
+}
 
+.device-nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.device-nav:hover::before {
+  left: 100%;
+}
+
+.device-nav:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.device-nav svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.5;
+  transition: transform 0.3s ease;
+}
+
+.device-nav:hover svg {
+  transform: scale(1.1);
+}
+
+.device-nav:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 .device-container {
   display: flex;
@@ -312,37 +369,31 @@
 
 .device-indicators {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   margin-top: 30px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 25px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .indicator {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   background: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   position: relative;
 }
 
 .indicator.active {
   background: linear-gradient(135deg, #4facfe, #5bcbd1);
   border-color: transparent;
-  transform: scale(1.2);
-  box-shadow: 0 0 15px rgba(79, 172, 254, 0.4);
+  transform: scale(1.3);
+  box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
 }
 
 .indicator:hover {
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.8);
   transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.1);
 }
 
 .hero-title {
@@ -535,6 +586,111 @@
   }
 }
 
+/* Side GIFs Styling */
+.side-gif {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-gif {
+  left: -120px;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+.right-gif {
+  right: -120px;
+  top: 70%;
+  transform: translateY(-70%);
+}
+
+.floating-gif {
+  width: 440px !important;
+  height: 440px !important;
+  object-fit: contain;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+  animation: floatGif 2s ease-in-out infinite;
+  transition: all 0.1s ease;
+}
+
+/* Make izin.gif even larger - it appears in the right-gif */
+.right-gif .floating-gif {
+  width: 290px;
+  height: 290px;
+}
+
+/* Special animation for hero-ai.gif - comes from top to bottom */
+.left-gif .floating-gif {
+  animation: heroAiFloat 1s ease-in-out forwards;
+}
+
+/* Animation for left gif when slider changes */
+.left-gif .floating-gif.slider-change {
+  animation: none !important;
+  transform: translate(-200px, -200px) scale(0.6) !important;
+  opacity: 0 !important;
+}
+
+.left-gif .floating-gif.slider-change {
+  animation: heroAiFloat 1s ease-in-out forwards !important;
+}
+
+/* Special animation for izin.gif - comes from top-right corner */
+.right-gif .floating-gif {
+  animation: izinFloat 1.2s ease-in-out forwards;
+}
+
+/* Override for slider change animation */
+.right-gif .floating-gif.slider-change {
+  animation: none !important;
+  transform: translate(200px, -200px) scale(0.6) !important;
+  opacity: 0 !important;
+}
+
+.right-gif .floating-gif.slider-change {
+  animation: izinFloat 1.2s ease-in-out forwards !important;
+}
+
+
+
+.floating-gif:hover {
+  transform: scale(1);
+}
+
+@keyframes floatGif {
+  0%, 100% {
+    transform: translateY(15px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes heroAiFloat {
+  0% {
+    transform: translateY(-300px) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 1;
+  }
+}
+
+@keyframes izinFloat {
+  0% {
+    transform: translate(200px, -200px) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .device-frame.iphonex {
@@ -550,6 +706,26 @@
   .device-frame.macbookpro {
     width: 600px;
     height: 375px;
+  }
+  
+  .floating-gif {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .right-gif .floating-gif {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .left-gif {
+    left: -80px;
+    top: 30%;
+  }
+  
+  .right-gif {
+    right: -80px;
+    top: 70%;
   }
   
 
@@ -627,7 +803,10 @@
     }
   }
   
-
+  .device-nav {
+    width: 40px;
+    height: 40px;
+  }
   
   .device-frame.iphonex {
     width: 160px;
@@ -656,6 +835,27 @@
   
   .device-subtitle {
     font-size: 0.8rem;
+  }
+  
+  /* Mobile GIF adjustments */
+  .floating-gif {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .right-gif .floating-gif {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .left-gif {
+    left: -60px;
+    top: 40%;
+  }
+  
+  .right-gif {
+    right: -60px;
+    top: 60%;
   }
 }
 
@@ -720,7 +920,36 @@
     height: 225px;
   }
   
-
+  /* Small mobile GIF adjustments */
+  .floating-gif {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .right-gif .floating-gif {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .left-gif {
+    left: -40px;
+    top: 45%;
+  }
+  
+  .right-gif {
+    right: -40px;
+    top: 55%;
+  }
+  
+  .device-nav {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .device-nav svg {
+    width: 16px;
+    height: 16px;
+  }
   
   .device-info {
     bottom: -40px;
@@ -743,6 +972,37 @@
   .stat-item {
     flex: 1;
     min-width: 120px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+  .floating-gif {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .right-gif .floating-gif {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .left-gif {
+    left: -30px;
+    top: 50%;
+  }
+  
+  .right-gif {
+    right: -30px;
+    top: 50%;
+  }
+  
+  .hero-devices {
+    height: 450px;
+  }
+  
+  .device-slider {
+    height: 350px;
   }
 }
 
