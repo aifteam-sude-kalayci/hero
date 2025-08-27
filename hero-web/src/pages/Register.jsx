@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Register.css';
+import formImg from '../assets/maskot pozları/masraf-formlarim.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -324,7 +325,7 @@ export default function Register() {
           <div className="register-form-container">
             <div className="form-image-overlay">
               <img 
-                src="/src/assets/maskot pozları/masraf-formlarim.png" 
+                 src={formImg} 
                 alt="Masraf Formlarım" 
                 className="form-corner-img"
               />

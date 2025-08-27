@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './AboutStory.css';
+import izinTanimlariImg from '../../assets/maskot pozları/izin-tanimlari.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,7 +49,7 @@ export default function AboutStory() {
           </div>
           <div className="story-image">
             <img 
-              src="/src/assets/maskot pozları/izin-tanimlari.png" 
+              src={izinTanimlariImg} 
               alt="İzin Tanımları" 
               className="story-img"
             />
