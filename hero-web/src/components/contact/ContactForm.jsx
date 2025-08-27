@@ -48,17 +48,21 @@ export default function ContactForm() {
   };
 
   const validatePhone = (phone) => {
-    const phoneRegex = /^[\d\s\(\)\+\-]+$/;
     if (!phone.trim()) {
       return 'Telefon alanı zorunludur';
     }
-    if (!phoneRegex.test(phone)) {
-      return 'Geçerli bir telefon numarası giriniz';
+    
+    // Check if it starts with +90
+    if (!phone.startsWith('+90')) {
+      return 'Telefon numarası +90 ile başlamalıdır';
     }
+    
+    // Count digits (excluding +90)
     const digitsOnly = phone.replace(/\D/g, '');
     if (digitsOnly.length < 10) {
       return 'Telefon numarası en az 10 haneli olmalıdır';
     }
+    
     return '';
   };
 
@@ -66,15 +70,23 @@ export default function ContactForm() {
     // Remove all non-digits
     const digitsOnly = value.replace(/\D/g, '');
     
-    // Format based on length
-    if (digitsOnly.length <= 3) {
-      return digitsOnly;
-    } else if (digitsOnly.length <= 6) {
-      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3)}`;
-    } else if (digitsOnly.length <= 10) {
-      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6)}`;
+    // Remove 90 if it's at the beginning (country code)
+    let phoneNumber = digitsOnly;
+    if (phoneNumber.startsWith('90')) {
+      phoneNumber = phoneNumber.substring(2);
+    }
+    
+    // Format with +90 prefix
+    if (phoneNumber.length === 0) {
+      return '+90 ';
+    } else if (phoneNumber.length <= 3) {
+      return `+90 ${phoneNumber}`;
+    } else if (phoneNumber.length <= 6) {
+      return `+90 ${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3)}`;
+    } else if (phoneNumber.length <= 8) {
+      return `+90 ${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3, 6)} ${phoneNumber.substring(6)}`;
     } else {
-      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6, 8)}-${digitsOnly.slice(8, 10)}`;
+      return `+90 ${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3, 6)} ${phoneNumber.substring(6, 8)} ${phoneNumber.substring(8, 10)}`;
     }
   };
 
@@ -227,15 +239,15 @@ export default function ContactForm() {
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="phone">Telefon *</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className={errors.phone ? 'error' : ''}
-                  placeholder="(555) 123-45-67"
-                />
+                                 <input
+                   type="tel"
+                   id="phone"
+                   name="phone"
+                   value={formData.phone}
+                   onChange={handleInputChange}
+                   className={errors.phone ? 'error' : ''}
+                   placeholder="+90 555 123 45 67"
+                 />
                 {errors.phone && <span className="error-message">{errors.phone}</span>}
               </div>
               
@@ -262,7 +274,6 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={handleInputChange}
                 rows="5"
-                placeholder="Mesajınızı buraya yazın..."
               ></textarea>
             </div>
             
