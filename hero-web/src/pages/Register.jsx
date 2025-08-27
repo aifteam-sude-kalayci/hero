@@ -66,10 +66,16 @@ export default function Register() {
         <div className="register-content">
           <div className="register-header">
             <h1>Kayıt Olun</h1>
-            <p>İnsan Kaynakları platformumuza katılın ve tüm İK süreçlerinizi dijitalleştirin</p>
           </div>
           
           <div className="register-form-container">
+            <div className="form-image-overlay">
+              <img 
+                src="/src/assets/maskot pozları/masraf-formlarim.png" 
+                alt="Masraf Formlarım" 
+                className="form-corner-img"
+              />
+            </div>
             <form className="register-form" ref={formRef} onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="companyName">Şirket Adı</label>

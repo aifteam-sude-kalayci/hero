@@ -156,9 +156,7 @@
   justify-content: center;
   gap: 40px;
   height: 100%;
-  flex: 1;
-  max-width: 1000px;
-  position: relative;
+  flex: 1;  position: relative;
 }
 
 .device-frame {
@@ -586,6 +584,76 @@
   }
 }
 
+/* Slider Title Styling */
+.slider-title-container {
+  text-align: center;
+  margin-bottom: 40px;
+  z-index: 5;
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  padding: 20px 0;
+}
+
+.slider-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #4facfe 0%, #5bcbd1 50%, #ff6b6b 100%);
+  -webkit-background-clip: text;
+
+  background-clip: text;
+
+}
+
+.slider-subtitle {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animated Title Words */
+.title-word {
+  animation: color-animation 4s linear infinite;
+  display: inline-block;
+  position: relative;
+}
+
+
+/* Title entrance animation */
+.slider-title-container {
+  animation: slideInFromTop 0.8s ease-out;
+  transition: transform 0.3s ease;
+}
+
+.slider-title-container:hover {
+  transform: translateY(-5px);
+}
+
+
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Side GIFs Styling */
 .side-gif {
   position: absolute;
@@ -597,14 +665,14 @@
 
 .left-gif {
   left: -120px;
-  top: 60%;
-  transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-30%);
 }
 
 .right-gif {
   right: -120px;
-  top: 70%;
-  transform: translateY(-70%);
+  top: 50%;
+  transform: translateY(-30%);
 }
 
 .floating-gif {
@@ -616,11 +684,6 @@
   transition: all 0.1s ease;
 }
 
-/* Make izin.gif even larger - it appears in the right-gif */
-.right-gif .floating-gif {
-  width: 290px;
-  height: 290px;
-}
 
 /* Special animation for hero-ai.gif - comes from top to bottom */
 .left-gif .floating-gif {
@@ -691,6 +754,59 @@
   }
 }
 
+/* Slider Navigation Buttons */
+.slider-nav-btn {
+  position: fixed;
+  top: 50%;
+  margin: 0px 30px;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.slider-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.slider-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.slider-nav-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.slider-nav-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.slider-nav-prev {
+  left: 0;
+}
+
+.slider-nav-next {
+  right: 0;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .device-frame.iphonex {
@@ -709,29 +825,49 @@
   }
   
   .floating-gif {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
   }
   
   .right-gif .floating-gif {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
   }
   
   .left-gif {
-    left: -80px;
-    top: 30%;
+    left: -100px;
+    top: 50%;
   }
   
   .right-gif {
-    right: -80px;
-    top: 70%;
+    right: -100px;
+    top: 50%;
   }
   
 
 }
 
 @media (max-width: 768px) {
+  /* Hide navigation buttons on mobile */
+  .slider-nav-btn {
+    display: none !important;
+  }
+  
+  .slider-title-container {
+    margin-bottom: 30px;
+    padding: 15px 0;
+  }
+  
+  .slider-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 15px;
+  }
+  
+  .slider-subtitle {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    max-width: 400px;
+  }
+  
   .hero-cta {
     flex-direction: column;
     align-items: center;
@@ -839,27 +975,42 @@
   
   /* Mobile GIF adjustments */
   .floating-gif {
-    width: 80px;
-    height: 80px;
+    width: 200px !important;
+    height: 200px !important;
   }
   
   .right-gif .floating-gif {
-    width: 100px;
-    height: 100px;
+    width: 200px !important;
+    height: 200px !important;
   }
   
   .left-gif {
-    left: -60px;
-    top: 40%;
+    left: -50px;
+    top: 90%;
   }
   
   .right-gif {
-    right: -60px;
-    top: 60%;
+    right: -50px;
+    top: 80%;
   }
 }
 
 @media (max-width: 480px) {
+  .slider-title-container {
+    margin-bottom: 25px;
+    padding: 10px 0;
+  }
+  
+  .slider-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    margin-bottom: 12px;
+  }
+  
+  .slider-subtitle {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    max-width: 300px;
+  }
+  
   .hero-devices {
     height: 500px;
   }
@@ -922,23 +1073,23 @@
   
   /* Small mobile GIF adjustments */
   .floating-gif {
-    width: 60px;
-    height: 60px;
+    width: 60px !important;
+    height: 60px !important;
   }
   
   .right-gif .floating-gif {
-    width: 80px;
-    height: 80px;
+    width: 60px !important;
+    height: 60px !important;
   }
   
   .left-gif {
     left: -40px;
-    top: 45%;
+    top: 50%;
   }
   
   .right-gif {
     right: -40px;
-    top: 55%;
+    top: 50%;
   }
   
   .device-nav {
@@ -978,22 +1129,22 @@
 /* Extra small screens */
 @media (max-width: 320px) {
   .floating-gif {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
   
   .right-gif .floating-gif {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
   
   .left-gif {
-    left: -30px;
+    left: -35px;
     top: 50%;
   }
   
   .right-gif {
-    right: -30px;
+    right: -35px;
     top: 50%;
   }
   

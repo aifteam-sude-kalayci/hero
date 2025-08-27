@@ -253,13 +253,41 @@ export default function Hero() {
 
           
           <div className="hero-devices">
-                                                   <div 
-                className="device-slider" 
-                ref={sliderRef}
-                onTouchStart={onTouchStart}
-                onTouchMove={onTouchMove}
-                onTouchEnd={onTouchEnd}
-              >
+            {/* Animated Slider Title */}
+            <div className="slider-title-container">
+              <h2 className="slider-title">
+                <span className="title-word title-word-1">{devices[currentDevice].title}</span>
+              </h2>
+              <p className="slider-subtitle">{devices[currentDevice].subtitle}</p>
+            </div>
+            
+                         <div 
+                 className="device-slider" 
+                 ref={sliderRef}
+                 onTouchStart={onTouchStart}
+                 onTouchMove={onTouchMove}
+                 onTouchEnd={onTouchEnd}
+               >
+                 {/* Navigation Buttons */}
+                 <button 
+                   className="slider-nav-btn slider-nav-prev" 
+                   onClick={prevDevice}
+                   aria-label="Previous slide"
+                 >
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                     <path d="M15 18l-6-6 6-6"/>
+                   </svg>
+                 </button>
+                 
+                 <button 
+                   className="slider-nav-btn slider-nav-next" 
+                   onClick={nextDevice}
+                   aria-label="Next slide"
+                 >
+                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                     <path d="M9 18l6-6-6-6"/>
+                   </svg>
+                 </button>
                 {/* Left side GIF - For both phone and web */}
                 <div className="side-gif left-gif">
                   <img 

@@ -176,6 +176,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.form-image-overlay {
+  position: absolute;
+  top: -120px;
+  left: 50px;
+  z-index: 10;
+}
+
+.form-corner-img {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.form-corner-img:hover {
+  transform: scale(1.1);
 }
 
 /* Form Styles */
@@ -397,6 +415,15 @@
   
   .register-header p {
     font-size: 1.1rem;
+  }
+  
+  .form-corner-img {
+    width: 80px;
+  }
+  
+  .form-image-overlay {
+    top: -10px;
+    left: -10px;
   }
   
   .register-form {
