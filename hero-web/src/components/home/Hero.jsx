@@ -25,16 +25,16 @@ export default function Hero() {
     {
       type: 'iPhoneX',
       image: iphoneImg,
-      title: 'Mobil Uygulama',
-      subtitle: 'Modern ve kullanıcı dostu mobil deneyim',
+      title: 'Mobil İK Yönetimi',
+      subtitle: 'Personel süreçlerinizi mobil cihazlardan yönetin',
       leftGif: heroAiGif,
       rightGif: girisCikisGif
     },
     {
       type: 'MacBookPro',
       image: webImg,
-      title: 'Web Tasarım',
-      subtitle: 'Responsive ve modern web tasarım hizmetleri',
+      title: 'Web İK Platformu',
+      subtitle: 'Kapsamlı insan kaynakları yönetim sistemi',
       leftGif: izinSagGif,
       rightGif: izinGif
     }
