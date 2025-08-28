@@ -33,7 +33,7 @@ export default function AboutValues() {
     {
       id: 1,
       title: "Yenilikçilik",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis",
+      description: "Sürekli gelişen teknoloji ile İK süreçlerini yeniden tanımlıyor, yapay zeka ve otomasyon ile geleceğin iş yerini bugünden inşa ediyoruz.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -43,7 +43,7 @@ export default function AboutValues() {
     {
       id: 2,
       title: "Güvenilirlik",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis",
+      description: "Müşterilerimizin verilerini en üst düzeyde güvenlik standartlarıyla koruyor, şeffaf ve dürüst iletişim kuruyoruz.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -54,7 +54,7 @@ export default function AboutValues() {
     {
       id: 3,
       title: "Kalite",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis",
+      description: "Her özelliğimizi mükemmellik standartlarında geliştiriyor, kullanıcı deneyimini en üst seviyede tutuyoruz.",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M9 12l2 2 4-4"/>

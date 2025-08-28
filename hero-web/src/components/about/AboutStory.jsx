@@ -37,13 +37,16 @@ export default function AboutStory() {
           <div className="story-text">
             <h2 className="section-title">Hikayemiz</h2>
             <p>
-             Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis obcaecati.
-              Quo modi illo dolore, voluptatum delectus accusantium. Laborum voluptatum temporibus similique,
-               a commodi molestiae nulla molestias aliquam ducimus!
+              Hero HRM'in hikayesi, modern iş dünyasının karmaşık insan kaynakları süreçlerini 
+              basitleştirme vizyonuyla başladı. Geleneksel İK yönetiminin zaman alıcı ve 
+              verimsiz süreçlerini gözlemleyerek, teknoloji ile insan faktörünü birleştiren 
+              yenilikçi bir çözüm geliştirmeye karar verdik.
             </p>
             <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ipsum facilis obcaecati.
-            Quo modi illo dolore, voluptatum delectus accusantium. Laborum voluptatum temporibus similique,
+              Bugün Hero HRM, yüzlerce şirketin güvendiği bir platform haline geldi. 
+              Yapay zeka destekli özelliklerimiz ve kullanıcı dostu arayüzümüzle, 
+              insan kaynakları yönetimini hem çalışanlar hem de yöneticiler için 
+              daha keyifli ve verimli hale getiriyoruz.
             </p>
             
           </div>

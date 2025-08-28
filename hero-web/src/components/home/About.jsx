@@ -51,21 +51,21 @@ export default function About() {
         <div className="about-content">
           <div className="about-text">
             <h2 ref={titleRef} className="section-title">
-              İnsan Kaynakları
-              <span className="highlight"> Platformu</span>
+              Hero HRM'e
+              <span className="highlight"> Hoşgeldiniz</span>
             </h2>
             
             <div ref={contentRef} className="about-description">
               <p>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Vitae mollitia incidunt dolore eius, blanditiis corrupti iste aliquid molestias 
-                in commodi dolor natus consectetur porro, iure doloremque rem voluptatem! Rerum, odit?
+                Hero HRM, modern işletmelerin insan kaynakları süreçlerini dijitalleştiren ve 
+                optimize eden kapsamlı bir platformdur. Yapay zeka destekli çözümlerimizle 
+                şirketinizin İK operasyonlarını daha verimli, şeffaf ve kullanıcı dostu hale getiriyoruz.
               </p>
               
               <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Vitae mollitia incidunt dolore eius, blanditiis corrupti iste aliquid molestias 
-                in commodi dolor natus consectetur porro, iure doloremque rem voluptatem! Rerum, odit?
+                Personel yönetimi, izin takibi, masraf raporları, avans talepleri ve daha fazlası 
+                için tek bir platformda tüm ihtiyaçlarınızı karşılıyoruz. Hero HRM ile 
+                insan kaynakları yönetimi artık çok daha kolay ve etkili.
               </p>
             </div>
 
