@@ -312,7 +312,7 @@ html {
 
 .service-content {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-bottom: 4rem;
   align-items: start;
@@ -320,6 +320,7 @@ html {
 
 .service-description {
   animation: fadeInUp 1s var(--animation-smooth) 0.2s both;
+  max-width: 850px;
 }
 
 .service-description h2 {
@@ -432,6 +433,7 @@ html {
   font-weight: 600;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+
 }
 
 .demo-container {
@@ -475,9 +477,17 @@ html {
   to { width: 60px; }
 }
 
+
+.service{
+    display: flex;
+}
+
+
 /* ===================== FEATURES SECTION ===================== */
 .service-features {
   animation: fadeInUp 1s var(--animation-smooth) 0.6s both;
+  display:flex;
+  flex-direction: column;
 }
 
 .service-features h3 {
@@ -830,5 +840,64 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-dark);
+}
+
+/* ===================== SERVICE CARD SLIDER INTEGRATION ===================== */
+.service-card-slider {
+  margin-top: 0;
+  background: var(--bg-secondary);
+
+}
+
+.service-card-slider .slider-header h2 {
+  color: var(--text-primary);
+}
+
+.service-card-slider .service-card {
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+}
+
+.service-card-slider .service-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card-slider .card-link {
+  color: var(--primary-color);
+}
+
+.service-card-slider .card-link:hover {
+  color: var(--primary-dark);
+}
+
+.service-card-slider .slider-nav {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.service-card-slider .slider-nav:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.service-card-slider .dot.active {
+  background: var(--primary-color);
+}
+
+/* Dark mode support for slider */
+@media (prefers-color-scheme: dark) {
+  .service-card-slider .service-card {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+  }
+  
+  .service-card-slider .slider-nav {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+  }
 }
   

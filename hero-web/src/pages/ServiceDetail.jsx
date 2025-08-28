@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import ServiceCardSlider from '../components/ServiceCardSlider';
 import './ServiceDetail.css';
 
 // Import PNG images from maskot pozları
@@ -593,66 +594,72 @@ export default function ServiceDetail() {
 
   return (
     <div className="service-detail-page" ref={detailRef}>
-      {/* Hero Section */}
-      <section className="service-hero">
-        <div className="container">
-                     <div className={`service-hero-content ${shouldImageBeOnLeft(currentService.id) ? 'image-left' : ''}`}>
-             <div className="service-hero-text">
-               <h1>{currentService.title}</h1>
-               <p className="service-hero-description">{currentService.shortDescription}</p>
-               <Link to="/hizmetler" className="back-to-services">
-                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                   <polyline points="15,18 9,12 15,6"/>
-                 </svg>
-                 Tüm Hizmetlere Dön
-               </Link>
-             </div>
-             <div className="service-hero-image">
-               {currentService.gif ? (
-                 <img src={currentService.gif} alt={`${currentService.title} Demo`} />
-               ) : (
-                 <img src={currentService.image} alt={currentService.title} />
-               )}
-             </div>
-           </div>
-        </div>
-      </section>            
+        {/* Hero Section */}
+        <section className="service-hero">
+            <div className="container">
+                <div className={`service-hero-content ${shouldImageBeOnLeft(currentService.id) ? 'image-left' : ''}`}>
+                    <div className="service-hero-text">
+                        <h1>{currentService.title}</h1>
+                        <p className="service-hero-description">{currentService.shortDescription}</p>
+                        <Link to="/hizmetler" className="back-to-services">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <polyline points="15,18 9,12 15,6"/>
+                            </svg>
+                            Tüm Hizmetlere Dön
+                        </Link>
+                    </div>
+                    <div className="service-hero-image">
+                    {currentService.gif ? (
+                        <img src={currentService.gif} alt={`${currentService.title} Demo`} />
+                    ) : (
+                        <img src={currentService.image} alt={currentService.title} />
+                    )}
+                    </div>
+                </div>
+            </div>
+        </section>            
 
 
-      {/* Service Details */}
-      <section className="service-details">
-        <div className="container">
-          <div className="service-content">
-            <div className="service-description">
-              <h2>Hizmet Detayları</h2>
-              <div className="description-paragraphs">
-                <p>{currentService.longDescription.split('. ').slice(0, 2).join('. ')}.</p>
-                <p>{currentService.longDescription.split('. ').slice(2).join('. ')}</p>
-              </div>
-              <div className="service-tags">
-                <span className="tag">{getTurkishCategory(currentService.category)}</span>
-                <span className="tag">Yönetim</span>
-                <span className="tag">Otomasyon</span>
-              </div>
+        {/* Service Details */}
+        <section className="service-details">
+            <div className="container">
+                <div className="service">
+                    <div className="service-description">
+                        <h2>Hizmet Detayları</h2>
+                        <div className="description-paragraphs">
+                            <p>{currentService.longDescription.split('. ').slice(0, 2).join('. ')}.</p>
+                            <p>{currentService.longDescription.split('. ').slice(2).join('. ')}</p>
+                        </div>
+                        <div className="service-tags">
+                            <span className="tag">{getTurkishCategory(currentService.category)}</span>
+                            <span className="tag">Yönetim</span>
+                            <span className="tag">Otomasyon</span>
+                        </div>
+                    <div>
+                    {/* Service Card Slider */}
+                    <ServiceCardSlider 
+                        services={Object.values(servicesData)} 
+                        currentServiceId={currentService.id}
+                    />
+                    </div>
+                    
+                </div>
+                <div className="service-features">
+                        <h3>Özellikler</h3>
+                        <ul>
+                            {currentService.features.map((feature, index) => (
+                            <li key={index}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <polyline points="20,6 9,17 4,12"/>
+                                </svg>
+                                {feature}
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div className="service-features">
-                <h3>Özellikler</h3>
-              <ul>
-                {currentService.features.map((feature, index) => (
-                  <li key={index}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <polyline points="20,6 9,17 4,12"/>
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          
-        
-        </div>
-      </section>
+        </section>
     </div>
   );
 }
