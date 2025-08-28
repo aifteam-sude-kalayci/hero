@@ -23,6 +23,19 @@
   margin-bottom: 80px;
 }
 
+.service-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 .service-card {
   background: white;
   border-radius: 20px;
@@ -119,11 +132,6 @@
   transition: all 0.3s ease;
 }
 
-.feature-tag:hover {
-  background: var(--accent-color);
-  color: white;
-  border-color: var(--accent-color);
-}
 
 .feature-tag svg {
   flex-shrink: 0;

@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    id: 1,
+    id: 2,
     title: "Personel Yönetimi",
     description: "Çalışanlarınızın tüm bilgilerini merkezi bir sistemde yönetin. Personel kayıtları, sözleşme takibi ve performans değerlendirmeleri ile insan kaynakları süreçlerinizi dijitalleştirin.",
     image: personellerImg,
@@ -24,7 +24,7 @@ const services = [
     color: "#667eea"
   },
   {
-    id: 2,
+    id: 3,
     title: "Departman Organizasyonu",
     description: "Şirket yapınızı organize edin. Departmanlar, pozisyonlar ve organizasyon şeması ile hiyerarşik yapınızı net bir şekilde görüntüleyin ve yönetin.",
     image: departmanlarImg,
@@ -32,7 +32,7 @@ const services = [
     color: "#feca57"
   },
   {
-    id: 3,
+    id: 4,
     title: "İzin & Tatil Yönetimi",
     description: "Çalışan izinlerini ve tatil planlarını kolayca yönetin. İzin talepleri, onay süreçleri ve tatil takvimi ile iş akışınızı optimize edin.",
     image: izinTanimlariImg,
@@ -40,7 +40,7 @@ const services = [
     color: "#ff6b6b"
   },
   {
-    id: 4,
+    id: 5,
     title: "Masraf Yönetimi",
     description: "Çalışan masraflarını dijital ortamda yönetin. Masraf formları, onay süreçleri ve raporlama ile şeffaf ve verimli bir masraf sistemi kurun.",
     image: masrafKategorileriImg,
@@ -48,7 +48,7 @@ const services = [
     color: "#48dbfb"
   },
   {
-    id: 5,
+    id: 6,
     title: "Avans Sistemi",
     description: "Çalışan avans taleplerini dijital ortamda yönetin. Avans tipleri, onay süreçleri ve geri ödeme takibi ile finansal süreçlerinizi kolaylaştırın.",
     image: avansTipleriImg,
@@ -56,7 +56,7 @@ const services = [
     color: "#0abde3"
   },
   {
-    id: 6,
+    id: 8,
     title: "Etkinlik & Takvim",
     description: "Şirket etkinliklerini ve önemli tarihleri takip edin. Doğum günleri, resmi tatiller ve şirket etkinlikleri ile çalışan bağlılığını artırın.",
     image: etkinlikTakvimiImg,
@@ -291,36 +291,38 @@ export default function Services() {
 
         <div ref={servicesRef} className="services-grid">
           {services.map((service) => (
-            <div key={service.id} className="service-card" style={{ "--accent-color": service.color }}>
-              <div className="service-image">
-                <img src={service.image} alt={service.title} />
-              </div>
-              
-              <div className="service-contents">
-                <h3 className="service-title">{service.title}</h3>
-                <p className="service-description">{service.description}</p>
+            <Link key={service.id} to={`/hizmetler/${service.id}`} className="service-card-link">
+              <div className="service-card" style={{ "--accent-color": service.color }}>
+                <div className="service-image">
+                  <img src={service.image} alt={service.title} />
+                </div>
                 
-                <div className="service-features">
-                  {service.features.map((feature, index) => (
-                    <div key={index} className="feature-tag">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <polyline points="20,6 9,17 4,12"/>
-                      </svg>
-                      {feature}
-                    </div>
-                  ))}
+                <div className="service-contents">
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-description">{service.description}</p>
+                  
+                  <div className="service-features">
+                    {service.features.map((feature, index) => (
+                      <div key={index} className="feature-tag">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="20,6 9,17 4,12"/>
+                        </svg>
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="service-actions">
+                  <div className="service-link">
+                    Detayları Gör
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
-              
-              <div className="service-actions">
-                <Link to={`/hizmetler#${service.id}`} className="service-link">
-                  Detayları Gör
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </Link>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
 

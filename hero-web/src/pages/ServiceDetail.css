@@ -406,7 +406,6 @@ html {
 }
 
 .service-tags .tag:hover {
-  transform: translateY(-1px) scale(1.02);
   box-shadow: var(--shadow-md);
   opacity: 0.9;
 }
@@ -549,17 +548,11 @@ html {
 }
 
 .service-features li:hover {
-  background: linear-gradient(135deg, #00b7ff 0%, #65e8ff 100%);
-  color: var(--bg-primary);
+  color: var(--text-secondary);
   transform: translateX(4px) scale(1.01);
-  box-shadow: var(--shadow-lg);
   border-color: var(--primary-color);
 }
 
-.service-features li:hover svg {
-  stroke: var(--bg-primary);
-  transform: scale(1.2);
-}
 
 .service-features svg {
   stroke: var(--primary-color);
