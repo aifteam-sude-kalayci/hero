@@ -202,17 +202,28 @@
   gap: 2rem;
 }
 
+.solutions-section .solution-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.solutions-section .solution-card-link:hover {
+  transform: translateY(-10px);
+}
+
 .solutions-section .solution-card {
   background: white;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
   border: 1px solid #f0f0f0;
+  height: 100%;
 }
 
-.solutions-section .solution-card:hover {
-  transform: translateY(-10px);
+.solutions-section .solution-card-link:hover .solution-card {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
