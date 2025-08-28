@@ -43,6 +43,52 @@ import avansGif from '../assets/maskot pozları/gifs/avans.gif';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Function to convert English category names to Turkish
+const getTurkishCategory = (category) => {
+  const categoryMap = {
+    'ai': 'Yapay Zeka',
+    'personnel': 'Personel',
+    'departments': 'Departmanlar',
+    'leave': 'İzin',
+    'expenses': 'Masraflar',
+    'advance': 'Avans',
+    'inventory': 'Zimmet',
+    'events': 'Etkinlikler',
+    'tasks': 'Görevler',
+    'attendance': 'Giriş-Çıkış',
+    'approval': 'Onay',
+    'company': 'Şirket',
+    'admin': 'Yönetici',
+    'advance-types': 'Avans Türleri',
+    'advance-history': 'Avans Geçmişi',
+    'leave-info': 'İzin Bilgileri',
+    'upcoming-leave': 'Yaklaşan İzinler',
+    'expense-forms': 'Masraf Formları',
+    'expense-approvals': 'Masraf Onayları',
+    'expense-history': 'Masraf Geçmişi',
+    'currencies': 'Para Birimleri',
+    'payment-methods': 'Ödeme Yöntemleri',
+    'tax-rates': 'Vergi Oranları',
+    'holidays': 'Resmi Tatiller',
+    'birthdays': 'Doğum Günleri',
+    'employee-distribution': 'Çalışan Dağılımı'
+  };
+  
+  return categoryMap[category] || category;
+};
+
+// Function to determine if image should be on the left for specific services
+const shouldImageBeOnLeft = (serviceId) => {
+  // Services that should have images on the left:
+  // 6: Avans Sistemi
+  // 7: Zimmet Takibi  
+  // 16: İzin Bilgileri
+  // 18: Masraf Formları
+  // 22: Ödeme Şekilleri
+  const leftImageServices = [6, 7, 16, 18, 22];
+  return leftImageServices.includes(serviceId);
+};
+
 export default function ServiceDetail() {
   const { serviceId } = useParams();
   const detailRef = useRef(null);
@@ -550,25 +596,25 @@ export default function ServiceDetail() {
       {/* Hero Section */}
       <section className="service-hero">
         <div className="container">
-          <div className="service-hero-content">
-            <div className="service-hero-text">
-              <h1>{currentService.title}</h1>
-              <p className="service-hero-description">{currentService.shortDescription}</p>
-              <Link to="/hizmetler" className="back-to-services">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="15,18 9,12 15,6"/>
-                </svg>
-                Tüm Hizmetlere Dön
-              </Link>
-            </div>
-            <div className="service-hero-image">
-              {currentService.gif ? (
-                <img src={currentService.gif} alt={`${currentService.title} Demo`} />
-              ) : (
-                <img src={currentService.image} alt={currentService.title} />
-              )}
-            </div>
-          </div>
+                     <div className={`service-hero-content ${shouldImageBeOnLeft(currentService.id) ? 'image-left' : ''}`}>
+             <div className="service-hero-text">
+               <h1>{currentService.title}</h1>
+               <p className="service-hero-description">{currentService.shortDescription}</p>
+               <Link to="/hizmetler" className="back-to-services">
+                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                   <polyline points="15,18 9,12 15,6"/>
+                 </svg>
+                 Tüm Hizmetlere Dön
+               </Link>
+             </div>
+             <div className="service-hero-image">
+               {currentService.gif ? (
+                 <img src={currentService.gif} alt={`${currentService.title} Demo`} />
+               ) : (
+                 <img src={currentService.image} alt={currentService.title} />
+               )}
+             </div>
+           </div>
         </div>
       </section>            
 
@@ -579,7 +625,15 @@ export default function ServiceDetail() {
           <div className="service-content">
             <div className="service-description">
               <h2>Hizmet Detayları</h2>
-              <p>{currentService.longDescription}</p>
+              <div className="description-paragraphs">
+                <p>{currentService.longDescription.split('. ').slice(0, 2).join('. ')}.</p>
+                <p>{currentService.longDescription.split('. ').slice(2).join('. ')}</p>
+              </div>
+              <div className="service-tags">
+                <span className="tag">{getTurkishCategory(currentService.category)}</span>
+                <span className="tag">Yönetim</span>
+                <span className="tag">Otomasyon</span>
+              </div>
             </div>
             <div className="service-features">
                 <h3>Özellikler</h3>

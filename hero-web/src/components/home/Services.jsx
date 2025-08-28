@@ -116,7 +116,7 @@ export default function Services() {
                 <img src={service.image} alt={service.title} />
               </div>
               
-              <div className="service-content">
+              <div className="service-contents">
                 <h3 className="service-title">{service.title}</h3>
                 <p className="service-description">{service.description}</p>
                 
