@@ -641,6 +641,8 @@
   transform: translateY(-5px);
 }
 
+/* Text animation removed - no slider transition animation */
+
 
 
 @keyframes slideInFromTop {
@@ -653,6 +655,8 @@
     opacity: 1;
   }
 }
+
+
 
 /* Side GIFs Styling */
 .side-gif {
@@ -680,40 +684,116 @@
   height: 440px !important;
   object-fit: contain;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
-  animation: floatGif 2s ease-in-out infinite;
   transition: all 0.1s ease;
 }
 
+/* ===== SLIDER-SPECIFIC STYLES ===== */
 
-/* Special animation for hero-ai.gif - comes from top to bottom */
-.left-gif .floating-gif {
-  animation: heroAiFloat 1s ease-in-out forwards;
+/* ===== FIRST SLIDER (Mobile) STYLES ===== */
+.device-slider[data-slide="0"] {
+  /* Mobile slider specific container styles */
 }
 
-/* Animation for left gif when slider changes */
-.left-gif .floating-gif.slider-change {
+/* First slider GIF positioning - Closer to phone */
+.device-slider[data-slide="0"] .left-gif {
+  left: -60px;
+  top: 50%;
+  transform: translateY(-30%);
+}
+
+.device-slider[data-slide="0"] .right-gif {
+  right: -60px;
+  top: 50%;
+  transform: translateY(-30%);
+}
+
+/* First slider GIF animations and effects */
+.device-slider[data-slide="0"] .left-gif .floating-gif {
+  animation: heroAiFloat 1s ease-in-out forwards;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) brightness(1.1);
+  width: 270px;
+  height: 390px ;
+}
+
+.device-slider[data-slide="0"] .right-gif .floating-gif {
+  animation: girisCikisFloat 1.2s ease-in-out forwards;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) contrast(1.1);
+  width: 260px ;
+  height: 360px;
+}
+
+/* First slider transition animations */
+.device-slider[data-slide="0"] .left-gif .floating-gif.slider-change {
   animation: none !important;
   transform: translate(-200px, -200px) scale(0.6) !important;
   opacity: 0 !important;
 }
 
-.left-gif .floating-gif.slider-change {
+.device-slider[data-slide="0"] .left-gif .floating-gif.slider-change {
   animation: heroAiFloat 1s ease-in-out forwards !important;
 }
 
-/* Special animation for izin.gif - comes from top-right corner */
-.right-gif .floating-gif {
-  animation: izinFloat 1.2s ease-in-out forwards;
-}
-
-/* Override for slider change animation */
-.right-gif .floating-gif.slider-change {
+.device-slider[data-slide="0"] .right-gif .floating-gif.slider-change {
   animation: none !important;
   transform: translate(200px, -200px) scale(0.6) !important;
   opacity: 0 !important;
 }
 
-.right-gif .floating-gif.slider-change {
+.device-slider[data-slide="0"] .right-gif .floating-gif.slider-change {
+  animation: girisCikisFloat 1.2s ease-in-out forwards !important;
+}
+
+/* ===== SECOND SLIDER (Web) STYLES ===== */
+.device-slider[data-slide="1"] {
+  /* Web slider specific container styles */
+}
+
+/* Second slider GIF positioning - Standard distance */
+.device-slider[data-slide="1"] .left-gif {
+  left: -120px;
+  top: 90%;
+  transform: translateY(-70%);
+}
+
+.device-slider[data-slide="1"] .right-gif {
+  right: -120px;
+  top: 90%;
+  transform: translateY(-70%);
+}
+
+/* Second slider GIF animations and effects */
+.device-slider[data-slide="1"] .left-gif .floating-gif {
+  animation: izinSagFloat 1.3s ease-in-out forwards;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) saturate(1.2);
+  width: 200px;
+  height: 200px;
+}
+
+.device-slider[data-slide="1"] .right-gif .floating-gif {
+  animation: izinFloat 1.2s ease-in-out forwards;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4)) hue-rotate(10deg);
+  width: 200px ;
+  height: 200px ;
+}
+
+/* Second slider transition animations */
+.device-slider[data-slide="1"] .left-gif .floating-gif.slider-change {
+  animation: none !important;
+  transform: translate(-200px, -200px) scale(0.6) !important;
+  opacity: 0 !important;
+}
+
+.device-slider[data-slide="1"] .left-gif .floating-gif.slider-change {
+  animation: izinSagFloat 1.3s ease-in-out forwards !important;
+}
+
+.device-slider[data-slide="1"] .right-gif .floating-gif.slider-change {
+  animation: none !important;
+  transform: translate(200px, -200px) scale(0.6) !important;
+  opacity: 0 !important;
+}
+
+.device-slider[data-slide="1"] .right-gif .floating-gif.slider-change {
   animation: izinFloat 1.2s ease-in-out forwards !important;
 }
 
@@ -739,6 +819,28 @@
   }
   100% {
     transform: translateY(0px) scale(0.8);
+    opacity: 1;
+  }
+}
+
+@keyframes girisCikisFloat {
+  0% {
+    transform: translate(200px, -200px) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes izinSagFloat {
+  0% {
+    transform: translate(-400px, -200px) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
     opacity: 1;
   }
 }
@@ -807,8 +909,11 @@
   right: 0;
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* ===== TABLET & SMALL DESKTOP (max-width: 1200px) ===== */
 @media (max-width: 1200px) {
+  /* Device frame sizes */
   .device-frame.iphonex {
     width: 200px;
     height: 400px;
@@ -824,35 +929,49 @@
     height: 375px;
   }
   
+  /* General GIF sizes */
   .floating-gif {
     width: 200px;
     height: 200px;
   }
   
-  .right-gif .floating-gif {
+  /* First slider responsive styles */
+  .device-slider[data-slide="0"] .floating-gif {
     width: 200px;
     height: 200px;
   }
   
-  .left-gif {
+  .device-slider[data-slide="0"] .left-gif {
+    left: -50px;
+  }
+  
+  .device-slider[data-slide="0"] .right-gif {
+    right: -50px;
+  }
+  
+  /* Second slider responsive styles */
+  .device-slider[data-slide="1"] .floating-gif {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .device-slider[data-slide="1"] .left-gif {
     left: -100px;
-    top: 50%;
   }
   
-  .right-gif {
+  .device-slider[data-slide="1"] .right-gif {
     right: -100px;
-    top: 50%;
   }
-  
-
 }
 
+/* ===== MOBILE (max-width: 768px) ===== */
 @media (max-width: 768px) {
   /* Hide navigation buttons on mobile */
   .slider-nav-btn {
     display: none !important;
   }
   
+  /* Title and subtitle adjustments */
   .slider-title-container {
     margin-bottom: 30px;
     padding: 15px 0;
@@ -868,35 +987,15 @@
     max-width: 400px;
   }
   
-  .hero-cta {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn {
-    width: 100%;
-    max-width: 300px;
-    justify-content: center;
-  }
-  
-  .hero-stats {
-    gap: 40px;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
-  }
-  
+  /* Layout adjustments */
   .hero-devices {
     margin-top: 40px;
-    height: 600px; /* Smaller height for mobile */
+    height: 600px;
   }
-  
-
   
   .device-slider {
     gap: 15px;
-    height: 500px; /* Smaller height for mobile */
+    height: 500px;
     justify-content: center;
   }
   
@@ -906,7 +1005,23 @@
     align-items: center;
   }
   
-  /* Mobile: Single device per slide */
+  /* Device frame sizes */
+  .device-frame.iphonex {
+    width: 160px;
+    height: 320px;
+  }
+  
+  .device-frame.ipad {
+    width: 320px;
+    height: 240px;
+  }
+  
+  .device-frame.macbookpro {
+    width: 480px;
+    height: 300px;
+  }
+  
+  /* Device animations */
   .phone-device {
     transform: rotate(-3deg) translateY(0);
     animation: phoneSwayMobile 4s ease-in-out infinite;
@@ -992,6 +1107,22 @@
   .right-gif {
     right: -80px;
     top: 75%;
+  }
+  
+  /* Second slider mobile styles - Smaller and lower positioned */
+  .device-slider[data-slide="1"] .floating-gif {
+    width: 190px !important;
+    height: 190px !important;
+  }
+  
+  .device-slider[data-slide="1"] .left-gif {
+    left: -60px;
+    top: 100%;
+  }
+  
+  .device-slider[data-slide="1"] .right-gif {
+    right: -60px;
+    top: 100%;
   }
 }
 
@@ -1090,6 +1221,22 @@
   .right-gif {
     right: -40px;
     top: 90%;
+  }
+  
+  /* Second slider small mobile styles - Even smaller and lower */
+  .device-slider[data-slide="1"] .floating-gif {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .device-slider[data-slide="1"] .left-gif {
+    left: -30px;
+    top: 98%;
+  }
+  
+  .device-slider[data-slide="1"] .right-gif {
+    right: -30px;
+    top: 95%;
   }
   
   .device-nav {

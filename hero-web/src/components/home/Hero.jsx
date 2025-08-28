@@ -21,6 +21,7 @@ export default function Hero() {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
 
+
   const devices = [
     {
       type: 'iPhoneX',
@@ -98,6 +99,8 @@ export default function Hero() {
   const animateDeviceTransition = (newIndex) => {
     // Animate out current devices with staggered timing
     const currentDevices = document.querySelectorAll('.device-frame');
+    
+
     
     // Add animation class to right gif and force reflow
     const rightGif = document.querySelector('.right-gif .floating-gif');
@@ -276,6 +279,7 @@ export default function Hero() {
                          <div 
                  className="device-slider" 
                  ref={sliderRef}
+                 data-slide={currentDevice}
                  onTouchStart={onTouchStart}
                  onTouchMove={onTouchMove}
                  onTouchEnd={onTouchEnd}
