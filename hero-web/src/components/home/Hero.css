@@ -641,9 +641,64 @@
   transform: translateY(-5px);
 }
 
-/* Text animation removed - no slider transition animation */
+/* Enhanced bouncing animation for titles */
+.slider-title.bounce {
+  animation: titleBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
+.slider-subtitle.bounce {
+  animation: subtitleBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
+/* Hover effects for titles */
+.slider-title:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+.slider-subtitle:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
+}
+
+@keyframes continuousBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes titleBounce {
+  0% {
+    transform: translateY(-30px) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes subtitleBounce {
+  0% {
+    transform: translateY(-20px) scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(8px) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
 
 @keyframes slideInFromTop {
   0% {
@@ -685,13 +740,6 @@
   object-fit: contain;
   filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
   transition: all 0.1s ease;
-}
-
-/* ===== SLIDER-SPECIFIC STYLES ===== */
-
-/* ===== FIRST SLIDER (Mobile) STYLES ===== */
-.device-slider[data-slide="0"] {
-  /* Mobile slider specific container styles */
 }
 
 /* First slider GIF positioning - Closer to phone */
@@ -744,9 +792,6 @@
 }
 
 /* ===== SECOND SLIDER (Web) STYLES ===== */
-.device-slider[data-slide="1"] {
-  /* Web slider specific container styles */
-}
 
 /* Second slider GIF positioning - Standard distance */
 .device-slider[data-slide="1"] .left-gif {

@@ -51,7 +51,7 @@ export default function About() {
         <div className="about-content">
           <div className="about-text">
             <h2 ref={titleRef} className="section-title">
-              Hero HRM'e
+              HERO HRM'e
               <span className="highlight"> Hoşgeldiniz</span>
             </h2>
             
@@ -75,6 +75,24 @@ export default function About() {
 
           <div className="about-image">
             <div className="image-wrapper">
+              {/* Circular animated text */}
+              <div className="circular-text-container">
+                <svg className="circular-text" viewBox="0 0 400 400">
+                  <defs>
+                    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#4facfe" />
+                      <stop offset="100%" stopColor="#00f2fe" />
+                    </linearGradient>
+                    <path id="circle-path" d="M 200,200 m -180,0 a 180,180 0 1,1 360,0 a 180,180 0 1,1 -360,0" />
+                  </defs>
+                  <text className="circular-text-content">
+                    <textPath href="#circle-path" startOffset="0%">
+                     • HERO HRM AI • HERO HRM AI • HERO HRM AI • 
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+              
               <img src={heroAiGif} alt="AI Destekli İK Asistanı" className="about-img" />
             </div>
           </div>

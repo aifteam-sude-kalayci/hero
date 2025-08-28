@@ -17,6 +17,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const sliderRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
   const [currentDevice, setCurrentDevice] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -177,8 +179,6 @@ export default function Hero() {
       }
     });
 
-
-
     // Enhanced device info animation
     const deviceInfo = document.querySelector('.device-info');
     if (deviceInfo) {
@@ -196,6 +196,42 @@ export default function Hero() {
             duration: 0.7,
             ease: "back.out(1.4)",
             delay: 0.3
+          });
+        }
+      });
+    }
+
+    // Animate title and subtitle with bouncing effect
+    if (titleRef.current) {
+      gsap.to(titleRef.current, {
+        y: -20,
+        scale: 1.1,
+        duration: 0.3,
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.to(titleRef.current, {
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: "bounce.out"
+          });
+        }
+      });
+    }
+
+    if (subtitleRef.current) {
+      gsap.to(subtitleRef.current, {
+        y: -15,
+        scale: 1.05,
+        duration: 0.3,
+        ease: "power2.out",
+        delay: 0.1,
+        onComplete: () => {
+          gsap.to(subtitleRef.current, {
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            ease: "bounce.out"
           });
         }
       });
@@ -221,7 +257,34 @@ export default function Hero() {
       );
     }
 
+    // Initial title and subtitle bouncing animation
+    if (titleRef.current) {
+      gsap.fromTo(titleRef.current,
+        { y: -50, opacity: 0, scale: 0.8 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          scale: 1, 
+          duration: 1, 
+          ease: "bounce.out",
+          delay: 0.3
+        }
+      );
+    }
 
+    if (subtitleRef.current) {
+      gsap.fromTo(subtitleRef.current,
+        { y: -30, opacity: 0, scale: 0.9 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          scale: 1, 
+          duration: 0.8, 
+          ease: "bounce.out",
+          delay: 0.5
+        }
+      );
+    }
 
     // Parallax effect
     const handleScroll = () => {
@@ -270,10 +333,10 @@ export default function Hero() {
           <div className="hero-devices">
             {/* Animated Slider Title */}
             <div className="slider-title-container">
-              <h2 className="slider-title">
+              <h2 className="slider-title" ref={titleRef}>
                 <span className="title-word title-word-1">{devices[currentDevice].title}</span>
               </h2>
-              <p className="slider-subtitle">{devices[currentDevice].subtitle}</p>
+              <p className="slider-subtitle" ref={subtitleRef}>{devices[currentDevice].subtitle}</p>
             </div>
             
                          <div 
