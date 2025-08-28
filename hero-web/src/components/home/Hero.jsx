@@ -347,7 +347,7 @@ export default function Hero() {
                 </div>
               </div>
             
-                         <div className="device-indicators">
+              <div className="device-indicators">
                {Array.from({ length: totalSlides }, (_, index) => (
                  <button
                    key={index}

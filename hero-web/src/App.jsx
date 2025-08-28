@@ -4,6 +4,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
+import ServiceDetail from './pages/ServiceDetail';
 import MainLayout from './layouts/MainLayout';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hakkimizda" element={<About />} />
         <Route path="/hizmetler" element={<Services />} />
+        <Route path="/hizmetler/:serviceId" element={<ServiceDetail />} />
         <Route path="/iletisim" element={<Contact />} />
         <Route path="/kayit-ol" element={<Register />} />
       </Routes>

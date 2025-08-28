@@ -184,8 +184,8 @@
 
 .form-image-overlay {
   position: absolute;
-  top: -120px;
-  left: 50px;
+  top: -145px;
+  left: 0px;
   z-index: 10;
 }
 
