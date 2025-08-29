@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ContactForm.css';
 
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function ContactForm() {
+  const contactRef = useRef(null);
+  const formRef = useRef(null);
+  
+  // Form state
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,147 +18,153 @@ export default function ContactForm() {
     company: '',
     message: ''
   });
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState({ show: false, message: '', type: '' });
+  
+  // UI state
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  // Toast notification function
-  const showToast = (message, type = 'success') => {
-    setToast({ show: true, message, type });
-    setTimeout(() => {
-      setToast({ show: false, message: '', type: '' });
-    }, 4000);
-  };
+  useEffect(() => {
+    // Page animation
+    gsap.fromTo(contactRef.current,
+      { opacity: 0, y: 30 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.8, 
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: contactRef.current,
+          start: "top 80%"
+        }
+      }
+    );
 
-  // Validation functions
-  const validateName = (name) => {
-    const nameRegex = /^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$/;
-    if (!name.trim()) {
-      return 'Ad soyad alanı zorunludur';
-    }
-    if (!nameRegex.test(name)) {
-      return 'Ad soyad sadece harf içerebilir';
-    }
-    if (name.trim().length < 2) {
-      return 'Ad soyad en az 2 karakter olmalıdır';
-    }
-    return '';
-  };
+    // Form animation
+    gsap.fromTo(formRef.current.children,
+      { opacity: 0, x: -30 },
+      { 
+        opacity: 1, 
+        x: 0, 
+        duration: 0.6, 
+        ease: "power2.out", 
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%"
+        }
+      }
+    );
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email.trim()) {
-      return 'E-posta alanı zorunludur';
-    }
-    if (!emailRegex.test(email)) {
-      return 'Geçerli bir e-posta adresi giriniz';
-    }
-    return '';
-  };
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
 
-  const validatePhone = (phone) => {
-    if (!phone.trim()) {
-      return 'Telefon alanı zorunludur';
-    }
-    
-    // Check if it starts with +90
-    if (!phone.startsWith('+90')) {
-      return 'Telefon numarası +90 ile başlamalıdır';
-    }
-    
-    // Count digits (excluding +90)
-    const digitsOnly = phone.replace(/\D/g, '');
-    if (digitsOnly.length < 10) {
-      return 'Telefon numarası en az 10 haneli olmalıdır';
-    }
-    
-    return '';
-  };
-
-  const formatPhoneNumber = (value) => {
-    // Remove all non-digits
-    const digitsOnly = value.replace(/\D/g, '');
-    
-    // Remove 90 if it's at the beginning (country code)
-    let phoneNumber = digitsOnly;
-    if (phoneNumber.startsWith('90')) {
-      phoneNumber = phoneNumber.substring(2);
-    }
-    
-    // Format with +90 prefix
-    if (phoneNumber.length === 0) {
-      return '+90 ';
-    } else if (phoneNumber.length <= 3) {
-      return `+90 ${phoneNumber}`;
-    } else if (phoneNumber.length <= 6) {
-      return `+90 ${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3)}`;
-    } else if (phoneNumber.length <= 8) {
-      return `+90 ${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3, 6)} ${phoneNumber.substring(6)}`;
-    } else {
-      return `+90 ${phoneNumber.substring(0, 3)} ${phoneNumber.substring(3, 6)} ${phoneNumber.substring(6, 8)} ${phoneNumber.substring(8, 10)}`;
-    }
-  };
-
+  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
     let processedValue = value;
     
-    // Special handling for name field - only letters and spaces
-    if (name === 'name') {
-      processedValue = value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '');
-    }
+    // Clear errors when user starts typing
+    if (error) setError('');
+    if (success) setSuccess('');
     
-    // Special handling for phone field - format phone number
-    if (name === 'phone') {
-      processedValue = formatPhoneNumber(value);
+    // Input validation and formatting
+    if (name === 'name') {
+      // Only allow letters, spaces, and Turkish characters
+      processedValue = value.replace(/[^a-zA-ZğüşıöçĞÜŞİÖÇ\s]/g, '');
+    } else if (name === 'phone') {
+      // Format phone number: +90 555 123 45 67
+      let phoneValue = value.replace(/\D/g, ''); // Remove all non-digits
+      
+      if (phoneValue.length > 0) {
+        if (phoneValue.startsWith('90')) {
+          phoneValue = phoneValue.substring(2);
+        }
+        if (phoneValue.length > 0) {
+          if (phoneValue.length <= 3) {
+            processedValue = `+90 ${phoneValue}`;
+          } else if (phoneValue.length <= 6) {
+            processedValue = `+90 ${phoneValue.substring(0, 3)} ${phoneValue.substring(3)}`;
+          } else if (phoneValue.length <= 8) {
+            processedValue = `+90 ${phoneValue.substring(0, 3)} ${phoneValue.substring(3, 6)} ${phoneValue.substring(6)}`;
+          } else {
+            processedValue = `+90 ${phoneValue.substring(0, 3)} ${phoneValue.substring(3, 6)} ${phoneValue.substring(6, 8)} ${phoneValue.substring(8, 10)}`;
+          }
+        }
+      }
     }
     
     setFormData(prev => ({
       ...prev,
       [name]: processedValue
     }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
   };
 
+  // Validate form
   const validateForm = () => {
-    const newErrors = {};
+    // Validate name
+    if (!formData.name.trim()) {
+      setError('Ad soyad gereklidir');
+      return false;
+    }
+    if (formData.name.trim().length < 2) {
+      setError('Ad soyad en az 2 karakter olmalıdır');
+      return false;
+    }
+    if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]+$/.test(formData.name.trim())) {
+      setError('Ad soyad sadece harf içermelidir');
+      return false;
+    }
     
-    const nameError = validateName(formData.name);
-    if (nameError) newErrors.name = nameError;
+    // Validate email
+    if (!formData.email.trim()) {
+      setError('E-posta gereklidir');
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setError('Geçerli bir e-posta adresi giriniz');
+      return false;
+    }
     
-    const emailError = validateEmail(formData.email);
-    if (emailError) newErrors.email = emailError;
+    // Validate phone
+    if (!formData.phone.trim()) {
+      setError('Telefon numarası gereklidir');
+      return false;
+    }
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      setError('Geçerli bir telefon numarası giriniz');
+      return false;
+    }
     
-    const phoneError = validatePhone(formData.phone);
-    if (phoneError) newErrors.phone = phoneError;
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!validateForm()) {
-      showToast('Lütfen form hatalarını düzeltin', 'error');
       return;
     }
-    
-    setIsSubmitting(true);
-    
+
+    setIsLoading(true);
+    setError('');
+    setSuccess('');
+
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      showToast('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.', 'success');
+      setSuccess('Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.');
+      
+      // Scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
       
       // Reset form
       setFormData({
@@ -159,134 +174,185 @@ export default function ContactForm() {
         company: '',
         message: ''
       });
+
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => {
+        setSuccess('');
+      }, 5000);
+
+    } catch (err) {
+      console.error('Contact form error:', err);
+      setError('Bir hata oluştu. Lütfen tekrar deneyin.');
       
-    } catch (error) {
-      showToast('Bir hata oluştu. Lütfen tekrar deneyin.', 'error');
+      // Scroll to top for error messages too
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Auto-hide error message after 5 seconds
+      setTimeout(() => {
+        setError('');
+      }, 5000);
     } finally {
-      setIsSubmitting(false);
+      setIsLoading(false);
     }
   };
 
   return (
-    <div className="contact-form-section">
-      {/* Toast Notification */}
-      {toast.show && (
-        <div className={`toast-notification ${toast.type}`}>
-          <div className="toast-content">
-            <div className="toast-icon">
-              {toast.type === 'success' ? (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <polyline points="22,4 12,14.01 9,11.01"/>
-                </svg>
-              ) : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="15" y1="9" x2="9" y2="15"/>
-                  <line x1="9" y1="9" x2="15" y2="15"/>
-                </svg>
+    <section className="contact-section" ref={contactRef}>
+      {/* Meteor Shower */}
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      <div className="meteor"></div>
+      
+      {/* Floating Bubbles */}
+      <div className="floating-bubble"></div>
+      <div className="floating-bubble"></div>
+      <div className="floating-bubble"></div>
+      <div className="floating-bubble"></div>
+      <div className="floating-bubble"></div>
+      <div className="floating-bubble"></div>
+      
+      <div className="container">
+        
+        <div className="contact-content">
+           
+            {/* Alert Messages Container */}
+            <div className="alert-container">
+              {/* Success Message */}
+              {success && (
+                <div className="alert alert-success">
+                  {success}
+                </div>
+              )}
+              
+              {/* Error Message */}
+              {error && (
+                <div className="alert alert-error">
+                  {error}
+                </div>
               )}
             </div>
-            <div className="toast-message">{toast.message}</div>
-            <button 
-              className="toast-close"
-              onClick={() => setToast({ show: false, message: '', type: '' })}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
+          <div className="contact-header">
+            <h1>Bizimle İletişime Geçin</h1>
+          </div>
+          
+          <div className="contact-form-container">            
+            <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="name">Ad Soyad</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required 
+                    placeholder="Adınız ve soyadınız"
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">E-posta</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required 
+                    placeholder="E-posta adresinizi girin"
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+              
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="phone">Telefon</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    required 
+                    placeholder="+90 555 123 45 67"
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="company">Şirket</label>
+                  <input 
+                    type="text" 
+                    id="company" 
+                    name="company" 
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder="Şirket adınız (opsiyonel)"
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="message">Mesaj</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows="5"
+                  disabled={isLoading}
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit" 
+                className="btn btn-primary contact-btn"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <svg className="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 12a9 9 0 11-6.219-8.56"/>
+                    </svg>
+                    Gönderiliyor...
+                  </>
+                ) : (
+                  <>
+                    Mesaj Gönder
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </>
+                )}
+              </button>
+            </form>
+           
+                     
           </div>
         </div>
-      )}
-
-      <div className="container">
-        {/* Contact Form */}
-        <div className="contact-form">
-          <h2>Bizimle İletişime Geçin</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">Ad Soyad *</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className={errors.name ? 'error' : ''}
-                  placeholder="Adınız ve soyadınız"
-                />
-                {errors.name && <span className="error-message">{errors.name}</span>}
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="email">E-posta *</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className={errors.email ? 'error' : ''}
-                  placeholder="ornek@email.com"
-                />
-                {errors.email && <span className="error-message">{errors.email}</span>}
-              </div>
-            </div>
-            
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="phone">Telefon *</label>
-                                 <input
-                   type="tel"
-                   id="phone"
-                   name="phone"
-                   value={formData.phone}
-                   onChange={handleInputChange}
-                   className={errors.phone ? 'error' : ''}
-                   placeholder="+90 555 123 45 67"
-                 />
-                {errors.phone && <span className="error-message">{errors.phone}</span>}
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="company">Şirket</label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleInputChange}
-                  placeholder="Şirket adınız"
-                />
-              </div>
-            </div>
-            
-
-            
-            <div className="form-group">
-              <label htmlFor="message">Mesaj</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                rows="5"
-              ></textarea>
-            </div>
-            
-            <button type="submit" className="submit-btn" disabled={isSubmitting}>
-              {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12,5 19,12 12,19"/>
-              </svg>
-            </button>
-          </form>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }

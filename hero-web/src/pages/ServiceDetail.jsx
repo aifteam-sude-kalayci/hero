@@ -100,9 +100,9 @@ export default function ServiceDetail() {
   const servicesData = {
     1: {
       id: 1,
-      title: "AI Destekli İK Asistanı",
-      shortDescription: "Yapay zeka destekli İK asistanımız ile tüm süreçlerinizi otomatikleştirin.",
-      longDescription: "Hero AI, insan kaynakları süreçlerinizi devrim niteliğinde değiştiren yapay zeka destekli asistanımızdır. Akıllı öneriler, otomatik süreç yönetimi ve veri analizi ile İK departmanınızın verimliliğini maksimum seviyeye çıkarır. Doğal dil işleme teknolojisi sayesinde çalışan sorularını anında yanıtlar, süreç optimizasyonu önerileri sunar ve karar verme süreçlerinizi destekler.",
+      title: "AI Destekli IK Asistanı",
+      shortDescription: "Yapay zeka destekli IK asistanımız ile tüm süreçlerinizi otomatikleştirin.",
+      longDescription: "Hero AI, insan kaynakları süreçlerinizi devrim niteliğinde değiştiren yapay zeka destekli asistanımızdır. Akıllı öneriler, otomatik süreç yönetimi ve veri analizi ile IK departmanınızın verimliliğini maksimum seviyeye çıkarır. Doğal dil işleme teknolojisi sayesinde çalışan sorularını anında yanıtlar, süreç optimizasyonu önerileri sunar ve karar verme süreçlerinizi destekler.",
       features: [
         "Akıllı süreç otomasyonu",
         "Doğal dil işleme ile soru-cevap",
@@ -572,22 +572,6 @@ export default function ServiceDetail() {
     };
   }, [serviceId, currentService]);
 
-  // Slider functions
-  const otherServices = Object.values(servicesData).filter(service => service.id !== currentService.id);
-  const totalSlides = Math.ceil(otherServices.length / 3);
-  
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
   if (!currentService) {
     return <div>Yükleniyor...</div>;
   }
@@ -619,11 +603,10 @@ export default function ServiceDetail() {
             </div>
         </section>            
 
-
         {/* Service Details */}
         <section className="service-details">
             <div className="container">
-                <div className="service">
+                <div className="service-content-wrapper">
                     <div className="service-description">
                         <h2>Hizmet Detayları</h2>
                         <div className="description-paragraphs">
@@ -635,16 +618,9 @@ export default function ServiceDetail() {
                             <span className="tag">Yönetim</span>
                             <span className="tag">Otomasyon</span>
                         </div>
-                    <div>
-                    {/* Service Card Slider */}
-                    <ServiceCardSlider 
-                        services={Object.values(servicesData)} 
-                        currentServiceId={currentService.id}
-                    />
                     </div>
                     
-                </div>
-                <div className="service-features">
+                    <div className="service-features">
                         <h3>Özellikler</h3>
                         <ul>
                             {currentService.features.map((feature, index) => (
@@ -657,6 +633,14 @@ export default function ServiceDetail() {
                             ))}
                         </ul>
                     </div>
+                </div>
+                
+                {/* Service Card Slider */}
+                <div className="slider-section">
+                    <ServiceCardSlider 
+                        services={Object.values(servicesData)} 
+                        currentServiceId={currentService.id}
+                    />
                 </div>
             </div>
         </section>

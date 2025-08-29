@@ -59,7 +59,7 @@ export default function About() {
               <p>
                 Hero HRM, modern işletmelerin insan kaynakları süreçlerini dijitalleştiren ve 
                 optimize eden kapsamlı bir platformdur. Yapay zeka destekli çözümlerimizle 
-                şirketinizin İK operasyonlarını daha verimli, şeffaf ve kullanıcı dostu hale getiriyoruz.
+                şirketinizin IK operasyonlarını daha verimli, şeffaf ve kullanıcı dostu hale getiriyoruz.
               </p>
               
               <p>
@@ -68,9 +68,6 @@ export default function About() {
                 insan kaynakları yönetimi artık çok daha kolay ve etkili.
               </p>
             </div>
-
-
-
           </div>
 
           <div className="about-image">
@@ -93,7 +90,7 @@ export default function About() {
                 </svg>
               </div>
               
-              <img src={heroAiGif} alt="AI Destekli İK Asistanı" className="about-img" />
+              <img src={heroAiGif} alt="AI Destekli IK Asistanı" className="about-img" />
             </div>
           </div>
         </div>

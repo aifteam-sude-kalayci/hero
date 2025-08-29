@@ -38,7 +38,7 @@ export default function AboutStory() {
             <h2 className="section-title">Hikayemiz</h2>
             <p>
               Hero HRM'in hikayesi, modern iş dünyasının karmaşık insan kaynakları süreçlerini 
-              basitleştirme vizyonuyla başladı. Geleneksel İK yönetiminin zaman alıcı ve 
+              basitleştirme vizyonuyla başladı. Geleneksel IK yönetiminin zaman alıcı ve 
               verimsiz süreçlerini gözlemleyerek, teknoloji ile insan faktörünü birleştiren 
               yenilikçi bir çözüm geliştirmeye karar verdik.
             </p>

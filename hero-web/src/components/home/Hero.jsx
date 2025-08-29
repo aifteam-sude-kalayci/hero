@@ -28,7 +28,7 @@ export default function Hero() {
     {
       type: 'iPhoneX',
       image: iphoneImg,
-      title: 'Mobil İK Yönetimi',
+      title: 'Mobil IK Yönetimi',
       subtitle: 'Personel süreçlerinizi mobil cihazlardan yönetin',
       leftGif: heroAiGif,
       rightGif: girisCikisGif
@@ -36,7 +36,7 @@ export default function Hero() {
     {
       type: 'MacBookPro',
       image: webImg,
-      title: 'Web İK Platformu',
+      title: 'Web IK Platformu',
       subtitle: 'Kapsamlı insan kaynakları yönetim sistemi',
       leftGif: izinSagGif,
       rightGif: izinGif

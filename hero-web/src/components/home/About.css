@@ -216,6 +216,7 @@
 @media (max-width: 768px) {
   .about {
     padding: 80px 0;
+    background: transparent; /* Remove background on mobile */
   }
   
   .about-content {
@@ -234,9 +235,18 @@
   .stat-number {
     font-size: 1.5rem;
   }
+  
+  /* Hide circular text on mobile devices */
+  .circular-text-container {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
+  .about {
+    background: transparent; /* Ensure background is removed on small mobile */
+  }
+  
   .about-stats {
     grid-template-columns: 1fr;
   }
