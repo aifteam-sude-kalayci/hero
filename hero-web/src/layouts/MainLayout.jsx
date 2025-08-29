@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import ScrollToTop from "../components/ui/ScrollToTop";
 
 export default function MainLayout({ children }) {
   const location = useLocation();
@@ -17,6 +18,7 @@ export default function MainLayout({ children }) {
         {children}
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
