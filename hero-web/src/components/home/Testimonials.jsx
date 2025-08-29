@@ -9,9 +9,9 @@ const testimonials = [
   {
     id: 1,
     name: "Ahmet Yılmaz",
-    position: "IK Müdürü",
+    position: "İK Müdürü",
     company: "TechCorp",
-    content: "IK süreçlerimizi bu platform ile dijitalleştirdik. Personel yönetimi artık çok daha kolay ve verimli. Özellikle izin ve masraf yönetimi modülleri harika.",
+    content: "İK süreçlerimizi bu platform ile dijitalleştirdik. Personel yönetimi artık çok daha kolay ve verimli. Özellikle izin ve masraf yönetimi modülleri harika.",
     rating: 5,
     avatar: "AY"
   },
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Ayşe Demir",
     position: "İnsan Kaynakları Uzmanı",
     company: "HR Solutions",
-    content: "Kullanıcı dostu arayüzü ve kapsamlı özellikleri ile IK süreçlerimizi tamamen otomatikleştirdik. Raporlama özellikleri de çok detaylı.",
+    content: "Kullanıcı dostu arayüzü ve kapsamlı özellikleri ile İK süreçlerimizi tamamen otomatikleştirdik. Raporlama özellikleri de çok detaylı.",
     rating: 5,
     avatar: "AD"
   },
@@ -29,14 +29,14 @@ const testimonials = [
     name: "Mehmet Kaya",
     position: "Genel Müdür",
     company: "Manufacturing Co.",
-    content: "200+ çalışanımızın tüm IK süreçlerini bu platform ile yönetiyoruz. Avans sistemi ve masraf takibi özellikle çok pratik.",
+    content: "200+ çalışanımızın tüm İK süreçlerini bu platform ile yönetiyoruz. Avans sistemi ve masraf takibi özellikle çok pratik.",
     rating: 5,
     avatar: "MK"
   },
   {
     id: 4,
     name: "Fatma Özkan",
-    position: "IK Direktörü",
+    position: "İK Direktörü",
     company: "Retail Group",
     content: "Çoklu şube yapımızda tüm personel verilerini merkezi olarak yönetebiliyoruz. Departman organizasyonu modülü mükemmel çalışıyor.",
     rating: 5,
@@ -47,7 +47,7 @@ const testimonials = [
     name: "Can Arslan",
     position: "İşletme Sahibi",
     company: "Startup Inc.",
-    content: "Küçük bir şirket olarak IK süreçlerimizi profesyonel bir şekilde yönetmek istiyorduk. Bu platform tam ihtiyacımız olan çözümü sundu.",
+    content: "Küçük bir şirket olarak İK süreçlerimizi profesyonel bir şekilde yönetmek istiyorduk. Bu platform tam ihtiyacımız olan çözümü sundu.",
     rating: 5,
     avatar: "CA"
   }
@@ -106,7 +106,7 @@ export default function Testimonials() {
           </h2>
           <p className="section-subtitle">
             Platformumuzu kullanan şirketlerin deneyimleri ve başarı hikayeleri. 
-            IK süreçlerini dijitalleştiren müşterilerimizin yorumları.
+            İK süreçlerini dijitalleştiren müşterilerimizin yorumları.
           </p>
         </div>
 

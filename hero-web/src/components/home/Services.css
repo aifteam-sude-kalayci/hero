@@ -168,7 +168,7 @@
 }
 
 .services-cta {
-  background: linear-gradient(135deg,#00b7ff, #65e8ff );
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
   border-radius: 24px;
   padding: 60px;
   text-align: center;
@@ -218,6 +218,7 @@
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;
+  color: white;
 }
 
 .cta-actions {

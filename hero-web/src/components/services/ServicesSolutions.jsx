@@ -42,8 +42,8 @@ export default function ServicesSolutions() {
   const solutions = [
     {
       id: 1,
-      title: "AI Destekli IK Asistanı",
-      description: "Yapay zeka destekli IK asistanımız ile tüm süreçlerinizi otomatikleştirin. Akıllı öneriler ve hızlı çözümler ile verimliliğinizi artırın.",
+      title: "AI Destekli İK Asistanı",
+      description: "Yapay zeka destekli İK asistanımız ile tüm süreçlerinizi otomatikleştirin. Akıllı öneriler ve hızlı çözümler ile verimliliğinizi artırın.",
       image: heroAiImg,
       category: "ai"
     },

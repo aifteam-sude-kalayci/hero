@@ -137,10 +137,21 @@
   object-fit: contain;
   border-radius: 50%;
   transition: all 0.3s ease;
+  animation: zoomInOut 4s ease-in-out infinite;
+}
+
+@keyframes zoomInOut {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
 }
 
 .image-wrapper:hover .about-img {
-  transform: scale(1.05);
+  animation: zoomInOut 2s ease-in-out infinite;
+  transform: scale(1.25);
 }
 
 .about-stats {

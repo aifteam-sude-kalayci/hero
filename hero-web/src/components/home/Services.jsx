@@ -330,7 +330,7 @@ export default function Services() {
           <canvas ref={canvasRef} className="cta-canvas"></canvas>
           <div className="cta-content">
             <h3>İnsan Kaynakları Süreçlerinizi Dijitalleştirin</h3>
-            <p>Modern bir işletme için gerekli olan tüm IK çözümlerini sunuyoruz. Hangi modüle ihtiyacınız olduğunu biliyor musunuz?</p>
+            <p>Modern bir işletme için gerekli olan tüm İK çözümlerini sunuyoruz. Hala Kayıt olmadınız mı?</p>
           </div>
           <div className="cta-actions">
             <Link to="/kayit-ol" className="btn btn-primary">

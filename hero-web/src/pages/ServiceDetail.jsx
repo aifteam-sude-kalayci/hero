@@ -100,9 +100,9 @@ export default function ServiceDetail() {
   const servicesData = {
     1: {
       id: 1,
-      title: "AI Destekli IK Asistanı",
-      shortDescription: "Yapay zeka destekli IK asistanımız ile tüm süreçlerinizi otomatikleştirin.",
-      longDescription: "Hero AI, insan kaynakları süreçlerinizi devrim niteliğinde değiştiren yapay zeka destekli asistanımızdır. Akıllı öneriler, otomatik süreç yönetimi ve veri analizi ile IK departmanınızın verimliliğini maksimum seviyeye çıkarır. Doğal dil işleme teknolojisi sayesinde çalışan sorularını anında yanıtlar, süreç optimizasyonu önerileri sunar ve karar verme süreçlerinizi destekler.",
+      title: "AI Destekli İK Asistanı",
+      shortDescription: "Yapay zeka destekli İK asistanımız ile tüm süreçlerinizi otomatikleştirin.",
+      longDescription: "Hero AI, insan kaynakları süreçlerinizi devrim niteliğinde değiştiren yapay zeka destekli asistanımızdır. Akıllı öneriler, otomatik süreç yönetimi ve veri analizi ile İK departmanınızın verimliliğini maksimum seviyeye çıkarır. Doğal dil işleme teknolojisi sayesinde çalışan sorularını anında yanıtlar, süreç optimizasyonu önerileri sunar ve karar verme süreçlerinizi destekler.",
       features: [
         "Akıllı süreç otomasyonu",
         "Doğal dil işleme ile soru-cevap",
