@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './ScrollToTop.css';
+import heroAiGif from '../../assets/maskot pozları/gifs/hero-ai.gif';
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,18 +38,11 @@ export default function ScrollToTop() {
           onClick={scrollToTop}
           aria-label="En üste çık"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 4L4 12H9V20H15V12H20L12 4Z"
-              fill="currentColor"
-            />
-          </svg>
+          <img 
+            src={heroAiGif} 
+            alt="Hero AI" 
+            className="hero-ai-gif"
+          />
         </button>
       )}
     </>

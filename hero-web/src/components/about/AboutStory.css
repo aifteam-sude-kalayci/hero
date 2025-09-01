@@ -91,12 +91,31 @@
   align-items: center;
 }
 
+.story-image {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 18, 39, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+
 .about-story .story-img {
   width: 100%;
   max-width: 400px;
   height: auto;
   transition: transform 0.3s ease;
   object-fit: cover;
+}
+
+.story-img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  animation: zoomInOut 4s ease-in-out infinite;
 }
 
 .about-story .story-img:hover {

@@ -193,11 +193,11 @@
 }
 
 .slider-nav.prev {
-  left: -24px;
+  left: -14px;
 }
 
 .slider-nav.next {
-  right: -24px;
+  right: -14px;
 }
 
 .slider-nav svg {
